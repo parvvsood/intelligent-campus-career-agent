@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
+import { Home } from './pages/Home';
+import { Dashboard } from './pages/Dashboard';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -22,11 +24,20 @@ export default function App() {
         studentProfile={studentProfile} 
       />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
-        <div className="bg-dark-surface p-8 rounded-2xl border border-slate-800 text-center space-y-4">
-          <h1 className="text-2xl font-bold text-white">Intelligent Campus Career Agent</h1>
-          <p className="text-slate-400">Design System and Base Layout Shell Initialized.</p>
-        </div>
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+        {activeTab === 'home' && <Home setActiveTab={setActiveTab} />}
+        {activeTab === 'dashboard' && (
+          <Dashboard 
+            studentProfile={studentProfile} 
+            setActiveTab={setActiveTab} 
+          />
+        )}
+        {activeTab !== 'home' && activeTab !== 'dashboard' && (
+          <div className="py-16 text-center space-y-4">
+            <h2 className="text-xl font-bold text-white capitalize">{activeTab} Page</h2>
+            <p className="text-slate-400">Page component building in progress for issue pipeline.</p>
+          </div>
+        )}
       </main>
 
       <Footer />
