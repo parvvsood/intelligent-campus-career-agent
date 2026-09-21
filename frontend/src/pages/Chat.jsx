@@ -40,47 +40,47 @@ export const Chat = ({ studentProfile, onOpenAuth }) => {
       </div>
     );
   }
-  const [sessions, setSessions] = useState([
-    {
-      id: 'session-1',
-      title: 'Data Analyst Hiring Companies',
-      messages: [
-        {
-          id: 'm-1',
-          sender: 'user',
-          text: 'Which companies come to our campus for Data Analyst roles?',
-          timestamp: '10:14 AM',
-        },
-        {
-          id: 'm-2',
-          sender: 'agent',
-          text: `Based on the uploaded campus placement records, the following companies actively recruit for **Data Analyst** and **Analytics** roles on campus:
+  const storageKey = studentProfile?.email
+    ? `campus_career_chat_history_${studentProfile.email}`
+    : 'campus_career_chat_history_guest';
 
-| Company Name | Package (CTC) | Min CGPA Cutoff | Target Roles | Primary Location |
-|---|---|---|---|---|
-| **Deloitte USI** | 8.5 LPA | 6.5 CGPA | Analyst - Business Technology | Pan-India |
-| **ZS Associates** | 13.5 LPA | 7.0 CGPA | Business Technology Analyst | Gurgaon / Pune |
-| **Accenture** | 6.5 LPA | 6.0 CGPA | Advanced Application Analyst | Pan-India |
-| **Amazon** | 16.0 LPA | 7.5 CGPA | Business Intelligence Engineer | Bangalore |
+  const [sessions, setSessions] = useState(() => {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.error('Error loading saved chat history:', e);
+    }
+    return [
+      {
+        id: `session-${Date.now()}`,
+        title: 'New Career Chat',
+        messages: [],
+      },
+    ];
+  });
 
-### Key Requirements Summary:
-- **Eligible Branches**: CSE, IT, ECE, AI/DS, Mathematics & Computing.
-- **Top In-Demand Skills**: SQL, Python (Pandas/NumPy), Power BI, Statistics, Problem Solving.`,
-          timestamp: '10:15 AM',
-          companies: [
-            { name: 'Deloitte USI', role: 'Analyst', package: '8.5 LPA', cutoff: '6.5 CGPA' },
-            { name: 'ZS Associates', role: 'Business Tech Analyst', package: '13.5 LPA', cutoff: '7.0 CGPA' },
-            { name: 'Amazon BIE', role: 'BI Engineer', package: '16.0 LPA', cutoff: '7.5 CGPA' },
-          ]
-        },
-      ],
-    },
-  ]);
+  const [activeSessionId, setActiveSessionId] = useState(() => {
+    return sessions[0]?.id || `session-${Date.now()}`;
+  });
 
-  const [activeSessionId, setActiveSessionId] = useState('session-1');
   const [inputText, setInputText] = useState('');
   const [loading, setLoading] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Persist chat sessions to localStorage on every session state update
+  useEffect(() => {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(sessions));
+    } catch (e) {
+      console.error('Error persisting chat history:', e);
+    }
+  }, [sessions, storageKey]);
 
   const chatEndRef = useRef(null);
 
