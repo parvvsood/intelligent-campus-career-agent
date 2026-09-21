@@ -18,3 +18,9 @@ def test_skill_study_plan_query():
     assert "metadata" in res
     assert "studyPlan" in res["metadata"]
     assert len(res["metadata"]["studyPlan"]) >= 3
+
+def test_company_remarks_query():
+    res = career_engine.process_query("What are your remarks about Deloitte?")
+    assert "FACT" in res["answer"]
+    assert "OBSERVATION" in res["answer"]
+    assert "Deloitte" in res["answer"]
