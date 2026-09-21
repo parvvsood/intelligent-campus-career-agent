@@ -140,9 +140,9 @@ export const Profile = ({ studentProfile, setStudentProfile, setActiveTab, onOpe
             <Input
               label="Specialization Track"
               name="specialization"
-              value={formData.specialization || 'Core CSE'}
+              value={formData.specialization || 'Core Stream / General'}
               onChange={handleInputChange}
-              placeholder="e.g. CSE - AI & Machine Learning"
+              placeholder="e.g. AI & Machine Learning"
             />
 
             <Input

@@ -7,7 +7,7 @@ class UserRegisterRequest(BaseModel):
     name: str
     rollNumber: str
     branch: str = "Computer Science & Engineering"
-    specialization: Optional[str] = "Core CSE"
+    specialization: Optional[str] = "Core Stream / General"
     cgpa: float = 8.0
     graduationYear: int = 2028
     skills: List[str] = []
@@ -24,7 +24,7 @@ class UserProfileResponse(BaseModel):
     name: str
     rollNumber: str
     branch: str
-    specialization: Optional[str] = "Core CSE"
+    specialization: Optional[str] = "Core Stream / General"
     cgpa: float
     graduationYear: int
     skills: List[str]

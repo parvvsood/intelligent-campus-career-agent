@@ -54,7 +54,7 @@ export const AuthModal = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login
     password: '',
     rollNumber: '',
     branch: 'Computer Science & Engineering',
-    specialization: 'Core CSE',
+    specialization: 'Core Stream / General',
     cgpa: '8.5',
     graduationYear: '2028',
     skills: ['Python', 'SQL', 'Data Analysis'],
@@ -387,9 +387,9 @@ export const AuthModal = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login
                     onChange={(e) => handleInputChange('specialization', e.target.value)}
                     className="w-full px-4 py-2.5 bg-dark-bg border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-brand-500"
                   >
-                    <option value="Core CSE">Core CSE (General Computer Science)</option>
-                    <option value="CSE - AI & Machine Learning">CSE - AI & Machine Learning (AI/ML)</option>
-                    <option value="CSE - AI & Future Technologies">CSE - AI & Future Technologies</option>
+                    <option value="Core Stream / General">Core Stream / General</option>
+                    <option value="AI & Machine Learning">AI & Machine Learning (AI/ML)</option>
+                    <option value="AI & Future Technologies">AI & Future Technologies</option>
                   </select>
                 </div>
 
