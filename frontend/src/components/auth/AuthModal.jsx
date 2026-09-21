@@ -390,10 +390,6 @@ export const AuthModal = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login
                     <option value="Core CSE">Core CSE (General Computer Science)</option>
                     <option value="CSE - AI & Machine Learning">CSE - AI & Machine Learning (AI/ML)</option>
                     <option value="CSE - AI & Future Technologies">CSE - AI & Future Technologies</option>
-                    <option value="CSE - Data Science & Analytics">CSE - Data Science & Analytics</option>
-                    <option value="CSE - Cyber Security & Digital Forensics">CSE - Cyber Security & Digital Forensics</option>
-                    <option value="CSE - Cloud Computing & DevOps">CSE - Cloud Computing & DevOps</option>
-                    <option value="General Engineering">General / Core Stream</option>
                   </select>
                 </div>
 
