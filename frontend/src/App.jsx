@@ -7,12 +7,14 @@ import { Chat } from './pages/Chat';
 import { Companies } from './pages/Companies';
 import { Profile } from './pages/Profile';
 import { AuthModal } from './components/auth/AuthModal';
+import { LogoutModal } from './components/auth/LogoutModal';
 import { authService } from './services/authService';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState('login');
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [studentProfile, setStudentProfile] = useState(null);
 
   useEffect(() => {
@@ -46,9 +48,14 @@ export default function App() {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogoutTrigger = () => {
+    setIsLogoutModalOpen(true);
+  };
+
+  const handleConfirmLogout = () => {
     authService.logout();
     setStudentProfile(null);
+    setIsLogoutModalOpen(false);
     setActiveTab('home');
   };
 
@@ -68,7 +75,7 @@ export default function App() {
         setActiveTab={setActiveTab} 
         studentProfile={studentProfile}
         onOpenAuth={handleOpenAuth}
-        onLogout={handleLogout}
+        onLogout={handleLogoutTrigger}
       />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,7 +113,7 @@ export default function App() {
             setStudentProfile={handleUpdateStudentProfile}
             setActiveTab={setActiveTab}
             onOpenAuth={handleOpenAuth}
-            onLogout={handleLogout}
+            onLogout={handleLogoutTrigger}
           />
         )}
       </main>
@@ -118,6 +125,12 @@ export default function App() {
         onClose={() => setIsAuthOpen(false)}
         onAuthSuccess={handleAuthSuccess}
         initialMode={authMode}
+      />
+
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+        onConfirm={handleConfirmLogout}
       />
     </div>
   );
