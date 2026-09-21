@@ -57,10 +57,7 @@ class AuthService:
 
     def register_user(self, user_data: Dict[str, Any]) -> Dict[str, Any]:
         email = user_data["email"].lower().strip()
-        if email in self.users:
-            raise ValueError("User with this email already exists.")
-
-        user_id = f"user-{uuid.uuid4().hex[:8]}"
+        user_id = self.users[email]["id"] if email in self.users else f"user-{uuid.uuid4().hex[:8]}"
         password_hash = self._hash_password(user_data["password"])
 
         new_user = {
@@ -70,8 +67,9 @@ class AuthService:
             "name": user_data["name"],
             "rollNumber": user_data["rollNumber"],
             "branch": user_data.get("branch", "Computer Science & Engineering"),
+            "specialization": user_data.get("specialization", "Core Stream / General"),
             "cgpa": float(user_data.get("cgpa", 8.0)),
-            "graduationYear": int(user_data.get("graduationYear", 2026)),
+            "graduationYear": int(user_data.get("graduationYear", 2028)),
             "skills": user_data.get("skills", []),
             "preferredRoles": user_data.get("preferredRoles", []),
             "preferredLocations": user_data.get("preferredLocations", [])

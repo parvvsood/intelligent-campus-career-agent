@@ -139,13 +139,13 @@ export const AuthModal = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login
       const payload = {
         ...formData,
         cgpa: parseFloat(formData.cgpa) || 8.0,
-        graduationYear: parseInt(formData.graduationYear) || 2026
+        graduationYear: parseInt(formData.graduationYear) || 2028
       };
       const res = await authService.register(payload);
       onAuthSuccess(res.user);
       onClose();
     } catch (err) {
-      setErrorMsg(err.response?.data?.detail || 'Failed to create student profile. Email may already exist.');
+      setErrorMsg(err.response?.data?.detail || 'Registration failed. Please verify your input and try again.');
     } finally {
       setLoading(false);
     }
