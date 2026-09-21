@@ -90,13 +90,22 @@ export const Header = ({ activeTab, setActiveTab, studentProfile, onOpenAuth, on
               </button>
             </div>
           ) : (
-            <button
-              onClick={() => onOpenAuth('login')}
-              className="flex items-center space-x-2 bg-brand-600 hover:bg-brand-500 text-white px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow-glow-sm transition-all"
-            >
-              <LogIn className="w-3.5 h-3.5" />
-              <span>Log In / Sign Up</span>
-            </button>
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => onOpenAuth('login')}
+                className="flex items-center space-x-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-semibold border border-slate-700 transition-all"
+              >
+                <LogIn className="w-3.5 h-3.5 text-slate-400" />
+                <span>Log In</span>
+              </button>
+              <button
+                onClick={() => onOpenAuth('signup')}
+                className="flex items-center space-x-1.5 bg-brand-600 hover:bg-brand-500 text-white px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow-glow-sm transition-all"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Sign Up</span>
+              </button>
+            </div>
           )}
         </div>
       </div>

@@ -12,36 +12,40 @@ import {
   ChevronRight,
   BookOpen,
   Briefcase,
-  Target
+  Target,
+  Lock,
+  LogIn,
+  UserPlus
 } from 'lucide-react';
 import { Button } from '../components/common/Button';
 import { Card } from '../components/common/Card';
 import { Badge } from '../components/common/Badge';
 import { fetchCareerPaths, fetchCompanies } from '../services/companyService';
 
-export const Dashboard = ({ studentProfile, setActiveTab, setSelectedCompany }) => {
+export const Dashboard = ({ studentProfile, setActiveTab, setSelectedCompany, onOpenAuth }) => {
   const [careerPaths, setCareerPaths] = useState([]);
   const [suggestedCompanies, setSuggestedCompanies] = useState([]);
   const [loadingPaths, setLoadingPaths] = useState(true);
 
   useEffect(() => {
+    if (!studentProfile || !studentProfile.email) return;
+
     const loadDashboardData = async () => {
       setLoadingPaths(true);
       try {
         // Fetch dynamic career paths based on student skills
-        const pathData = await fetchCareerPaths(studentProfile.skills, studentProfile.cgpa);
+        const pathData = await fetchCareerPaths(studentProfile.skills || [], studentProfile.cgpa || 8.0);
         if (pathData && pathData.career_paths) {
           setCareerPaths(pathData.career_paths);
         }
 
         // Fetch real suggested companies
-        const companyData = await fetchCompanies(null, studentProfile.cgpa);
+        const companyData = await fetchCompanies(null, studentProfile.cgpa || 8.0);
         if (companyData && companyData.companies) {
           setSuggestedCompanies(companyData.companies.slice(0, 6));
         }
       } catch (err) {
         console.warn('Dashboard API fallback active:', err);
-        // Fallback calculation directly in frontend if backend server is reloading
         calculateFallbackPaths();
       } finally {
         setLoadingPaths(false);
@@ -50,6 +54,38 @@ export const Dashboard = ({ studentProfile, setActiveTab, setSelectedCompany }) 
 
     loadDashboardData();
   }, [studentProfile]);
+
+  // UNAUTHENTICATED ACCESS GUARD
+  if (!studentProfile || !studentProfile.email) {
+    return (
+      <div className="max-w-2xl mx-auto py-16 px-4 text-center space-y-6">
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="w-20 h-20 rounded-3xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center mx-auto text-brand-400 shadow-glow-sm"
+        >
+          <Lock className="w-10 h-10" />
+        </motion.div>
+
+        <div className="space-y-3">
+          <h2 className="text-3xl font-extrabold text-white tracking-tight">Student Login Required</h2>
+          <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
+            Please log in or create your student profile with your CGPA and technical skills to unlock your personalized career dashboard, match scores, and recruiter eligibility analysis.
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <Button variant="primary" size="lg" icon={LogIn} onClick={() => onOpenAuth && onOpenAuth('login')}>
+            Log In to Account
+          </Button>
+          <Button variant="secondary" size="lg" icon={UserPlus} onClick={() => onOpenAuth && onOpenAuth('signup')}>
+            Sign Up (New Student)
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   const calculateFallbackPaths = () => {
     const skillsLower = studentProfile.skills.map(s => s.toLowerCase());

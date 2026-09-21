@@ -13,37 +13,16 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState('login');
-
-  const [studentProfile, setStudentProfile] = useState({
-    name: '',
-    email: '',
-    rollNumber: '',
-    branch: 'Computer Science & Engineering',
-    cgpa: 8.5,
-    graduationYear: 2026,
-    skills: ['Python', 'SQL', 'Data Analysis', 'React', 'Machine Learning'],
-    preferredRoles: ['Data Analyst & Analytics', 'AI / ML Engineer'],
-    preferredLocations: ['Bangalore', 'Gurugram', 'Remote'],
-  });
+  const [studentProfile, setStudentProfile] = useState(null);
 
   useEffect(() => {
     async function initUserSession() {
       const storedUser = authService.getUser();
-      if (storedUser) {
+      if (storedUser && storedUser.email) {
         setStudentProfile(storedUser);
       } else {
-        // Fallback default profile if not logged in
-        setStudentProfile({
-          name: 'Alex Student',
-          email: 'alex@campus.edu',
-          rollNumber: '2210991001',
-          branch: 'Computer Science & Engineering',
-          cgpa: 8.7,
-          graduationYear: 2026,
-          skills: ['Python', 'SQL', 'Data Analysis', 'React', 'Machine Learning'],
-          preferredRoles: ['Data Analyst & Analytics', 'AI / ML Engineer'],
-          preferredLocations: ['Bangalore', 'Gurugram', 'Hyderabad', 'Remote'],
-        });
+        // Strict Unauthenticated state by default (no guest account)
+        setStudentProfile(null);
       }
     }
     initUserSession();
@@ -56,17 +35,7 @@ export default function App() {
 
   const handleLogout = () => {
     authService.logout();
-    setStudentProfile({
-      name: 'Guest Student',
-      email: '',
-      rollNumber: '',
-      branch: 'Computer Science & Engineering',
-      cgpa: 8.0,
-      graduationYear: 2026,
-      skills: ['Python', 'SQL'],
-      preferredRoles: ['Software Development Engineer (SDE)'],
-      preferredLocations: ['Bangalore'],
-    });
+    setStudentProfile(null);
     setActiveTab('home');
   };
 
@@ -107,6 +76,7 @@ export default function App() {
         {activeTab === 'chat' && (
           <Chat 
             studentProfile={studentProfile} 
+            onOpenAuth={handleOpenAuth}
           />
         )}
         {activeTab === 'companies' && (
@@ -114,6 +84,7 @@ export default function App() {
             studentProfile={studentProfile} 
             setActiveTab={setActiveTab} 
             onAskAboutCompany={handleAskAboutCompany}
+            onOpenAuth={handleOpenAuth}
           />
         )}
         {activeTab === 'profile' && (

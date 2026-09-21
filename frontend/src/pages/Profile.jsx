@@ -1,14 +1,47 @@
 import React, { useState } from 'react';
-import { User, GraduationCap, Award, MapPin, Briefcase, Plus, X, Save, CheckCircle2 } from 'lucide-react';
+import { User, GraduationCap, Award, MapPin, Briefcase, Plus, X, Save, CheckCircle2, Lock, LogIn, UserPlus } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Card } from '../components/common/Card';
 import { Button } from '../components/common/Button';
 import { Input } from '../components/common/Input';
 import { Badge } from '../components/common/Badge';
 
-export const Profile = ({ studentProfile, setStudentProfile, setActiveTab }) => {
-  const [formData, setFormData] = useState({ ...studentProfile });
+export const Profile = ({ studentProfile, setStudentProfile, setActiveTab, onOpenAuth, onLogout }) => {
+  const [formData, setFormData] = useState(studentProfile ? { ...studentProfile } : {});
   const [newSkill, setNewSkill] = useState('');
   const [savedSuccess, setSavedSuccess] = useState(false);
+
+  // UNAUTHENTICATED GUARD
+  if (!studentProfile || !studentProfile.email) {
+    return (
+      <div className="max-w-2xl mx-auto py-16 px-4 text-center space-y-6">
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="w-20 h-20 rounded-3xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center mx-auto text-indigo-400 shadow-glow-sm"
+        >
+          <Lock className="w-10 h-10" />
+        </motion.div>
+
+        <div className="space-y-3">
+          <h2 className="text-3xl font-extrabold text-white tracking-tight">Academic Profile Locked</h2>
+          <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
+            You need to be logged in to view and edit your academic background, roll number, CGPA, and technical skills portfolio.
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <Button variant="primary" size="lg" icon={LogIn} onClick={() => onOpenAuth && onOpenAuth('login')}>
+            Log In to Account
+          </Button>
+          <Button variant="secondary" size="lg" icon={UserPlus} onClick={() => onOpenAuth && onOpenAuth('signup')}>
+            Sign Up Now
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
