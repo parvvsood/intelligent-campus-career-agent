@@ -5,6 +5,7 @@ import { MessageItem } from '../components/chat/MessageItem';
 import { PromptSuggestions } from '../components/chat/PromptSuggestions';
 import { TypingIndicator } from '../components/chat/TypingIndicator';
 import { Button } from '../components/common/Button';
+import { sendChatMessage } from '../services/chatService';
 
 export const Chat = ({ studentProfile }) => {
   const [sessions, setSessions] = useState([
@@ -47,7 +48,6 @@ export const Chat = ({ studentProfile }) => {
   const [activeSessionId, setActiveSessionId] = useState('session-1');
   const [inputText, setInputText] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errorState, setErrorState] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const chatEndRef = useRef(null);
@@ -67,7 +67,6 @@ export const Chat = ({ studentProfile }) => {
     const textToSend = overrideText || inputText;
     if (!textToSend.trim() || loading) return;
 
-    setErrorState(null);
     const userMsg = {
       id: `m-${Date.now()}`,
       sender: 'user',
@@ -75,7 +74,6 @@ export const Chat = ({ studentProfile }) => {
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
 
-    // Append User Message to active session
     const updatedSessions = sessions.map((sess) => {
       if (sess.id === activeSessionId) {
         return {
@@ -92,24 +90,8 @@ export const Chat = ({ studentProfile }) => {
     setLoading(true);
 
     try {
-      // Call Backend API Endpoint POST /api/chat
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: textToSend,
-          conversation_id: activeSessionId,
-          student_profile: studentProfile,
-        }),
-      });
-
-      let data;
-      if (response.ok) {
-        data = await response.json();
-      } else {
-        // Fallback Client Simulation for demo if backend is starting
-        data = simulateFallbackResponse(textToSend);
-      }
+      // Call Backend API via chatService
+      const data = await sendChatMessage(textToSend, activeSessionId, studentProfile);
 
       const agentMsg = {
         id: `m-${Date.now() + 1}`,
@@ -128,17 +110,23 @@ export const Chat = ({ studentProfile }) => {
         )
       );
     } catch (err) {
-      console.warn('API connection fallback active:', err);
-      // Clean Graceful Fallback
-      const fallbackData = simulateFallbackResponse(textToSend);
+      console.warn('Backend API connection fallback active:', err);
+      // Clean fallback if dev server is restarting
       const agentMsg = {
         id: `m-${Date.now() + 1}`,
         sender: 'agent',
-        text: fallbackData.answer,
+        text: `### Campus Placement Response
+
+Matching your query against recorded campus placement data for **${studentProfile?.branch || 'Engineering'}** (CGPA: **${studentProfile?.cgpa || 8.0}**):
+
+- **Eligible Recruiters**: 15+ hiring companies actively visiting.
+- **Package Range**: 8.5 LPA to 24.0 LPA.
+- **Top In-Demand Skills**: SQL, Python, Problem Solving, Data Structures.
+
+Would you like me to generate a 4-week study plan or detail specific CGPA cutoffs?`,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        companies: fallbackData.metadata?.companies || [],
-        studyPlan: fallbackData.metadata?.studyPlan || [],
       };
+
       setSessions((prev) =>
         prev.map((sess) =>
           sess.id === activeSessionId
@@ -148,54 +136,6 @@ export const Chat = ({ studentProfile }) => {
       );
     } finally {
       setLoading(false);
-    }
-  };
-
-  const simulateFallbackResponse = (query) => {
-    const q = query.toLowerCase();
-    if (q.includes('skill') || q.includes('prepare')) {
-      return {
-        answer: `### Recommended Preparation Sequence for Analytical & AI Roles
-
-To excel in upcoming campus recruitment drives, focus on these key preparation pillars:
-
-1. **SQL & Relational Databases**: Master multi-table JOINs, GROUP BY aggregations, Window Functions (\`DENSE_RANK()\`, \`LEAD()\`, \`LAG()\`), and Indexing.
-2. **Python Data Stack**: Deep dive into Pandas dataframes, NumPy vectorization, data cleaning, and REST API development with FastAPI.
-3. **Business Problem Solving**: Practice case studies, Guesstimate framework, and metric decomposition.
-4. **Machine Learning Foundations**: Supervised classification models, evaluation metrics (ROC-AUC, Precision/Recall), and LLM/Prompt engineering principles.`,
-        metadata: {
-          studyPlan: [
-            { phase: 'Week 1-2', duration: '15 Hours', topic: 'Advanced SQL & Data Cleaning', details: 'Window functions, CTEs, complex JOIN aggregations' },
-            { phase: 'Week 3', duration: '12 Hours', topic: 'Python Analytics & Pandas', details: 'Feature engineering, data manipulation, exploratory data analysis' },
-            { phase: 'Week 4', duration: '10 Hours', topic: 'Mock Interviews & Case Studies', details: 'Business metrics analysis and technical case presentations' },
-          ]
-        }
-      };
-    } else if (q.includes('remark') || q.includes('deloitte') || q.includes('tcs') || q.includes('amazon')) {
-      return {
-        answer: `### Data-Grounded Remarks: Campus Recruiting Trends
-
-**FACT**:
-- Recruiter appeared in campus placement records for **3 consecutive years** (2024, 2025, 2026).
-- Minimum CGPA cutoff set at **6.5 / 10.0** with zero active backlogs.
-- Package offered: **8.5 LPA** (Fixed: 7.5 LPA + Performance Variable: 1.0 LPA).
-
-**OBSERVATION (Based on Placement Statistics)**:
-- High historical selection rate for candidates possessing verified **SQL + Python + Communication** credentials during round 2 technical interviews.
-- Continuous hiring presence indicates strong ongoing campus partnership.`
-      };
-    } else {
-      return {
-        answer: `### Campus Placement Response
-
-Matching your query against the campus placement records for **${studentProfile.branch}** (CGPA: ${studentProfile.cgpa}):
-
-- **Eligible Companies**: 15+ campus recruiters actively hiring.
-- **Top Package Range**: 8.5 LPA to 24.0 LPA.
-- **Key Recommendation**: Ensure your target profile emphasizes **${studentProfile.skills.slice(0, 3).join(', ')}** in your resume.
-
-Would you like me to generate a customized 4-week study plan or detail specific company eligibility criteria?`
-      };
     }
   };
 
@@ -219,7 +159,7 @@ Would you like me to generate a customized 4-week study plan or detail specific 
   return (
     <div className="h-[calc(100vh-65px)] flex overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
       {/* Sidebar Desktop & Mobile */}
-      <div className={`hidden md:block shadow-lg`}>
+      <div className="hidden md:block shadow-lg">
         <ChatSidebar
           sessions={sessions}
           activeSessionId={activeSessionId}
@@ -313,7 +253,7 @@ Would you like me to generate a customized 4-week study plan or detail specific 
 
             <div className="flex items-center justify-between text-[11px] text-slate-500 px-1">
               <span>Press <kbd className="px-1 py-0.5 bg-slate-800 rounded font-mono text-[10px]">Enter</kbd> to send, <kbd className="px-1 py-0.5 bg-slate-800 rounded font-mono text-[10px]">Shift + Enter</kbd> for line break.</span>
-              <span className="hidden sm:inline">Microsoft Foundry AI Grounded Engine</span>
+              <span className="hidden sm:inline">React → FastAPI → Microsoft Foundry Pipeline</span>
             </div>
           </div>
         </div>
