@@ -82,6 +82,21 @@ export const Profile = ({ studentProfile, setStudentProfile, setActiveTab }) => 
             />
 
             <Input
+              label="Email Address"
+              name="email"
+              type="email"
+              value={formData.email || ''}
+              onChange={handleInputChange}
+            />
+
+            <Input
+              label="Roll Number"
+              name="rollNumber"
+              value={formData.rollNumber || ''}
+              onChange={handleInputChange}
+            />
+
+            <Input
               label="Branch / Department"
               name="branch"
               value={formData.branch}

@@ -9,3 +9,6 @@ export const apiClient = axios.create({
   },
   timeout: 15000,
 });
+
+export default apiClient;
+

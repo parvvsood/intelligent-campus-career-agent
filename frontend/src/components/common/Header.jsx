@@ -1,7 +1,7 @@
 import React from 'react';
-import { Bot, Sparkles, User, LayoutDashboard, Building2, MessageSquare, Compass } from 'lucide-react';
+import { Bot, Sparkles, User, LayoutDashboard, Building2, MessageSquare, Compass, LogIn, LogOut } from 'lucide-react';
 
-export const Header = ({ activeTab, setActiveTab, studentProfile }) => {
+export const Header = ({ activeTab, setActiveTab, studentProfile, onOpenAuth, onLogout }) => {
   const navItems = [
     { id: 'home', label: 'Home', icon: Compass },
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -56,29 +56,51 @@ export const Header = ({ activeTab, setActiveTab, studentProfile }) => {
           })}
         </nav>
 
-        {/* Quick Student Badge / Profile Summary */}
+        {/* Quick Student Badge / Profile Summary & Auth Actions */}
         <div className="flex items-center space-x-3">
           <button
             onClick={() => setActiveTab('chat')}
-            className="hidden sm:inline-flex items-center space-x-1.5 text-xs bg-brand-500/10 hover:bg-brand-500/20 text-brand-300 px-3 py-1.5 rounded-lg border border-brand-500/30 transition-all"
+            className="hidden lg:inline-flex items-center space-x-1.5 text-xs bg-brand-500/10 hover:bg-brand-500/20 text-brand-300 px-3 py-1.5 rounded-lg border border-brand-500/30 transition-all"
           >
             <Sparkles className="w-3.5 h-3.5 text-brand-400 animate-pulse" />
             <span>Ask Career Agent</span>
           </button>
 
-          <button
-            onClick={() => setActiveTab('profile')}
-            className="flex items-center space-x-2 bg-dark-card hover:bg-dark-border p-1.5 sm:px-3 sm:py-1.5 rounded-xl border border-slate-700/60 transition-all text-xs text-slate-300"
-          >
-            <div className="w-6 h-6 rounded-full bg-slate-800 text-brand-400 flex items-center justify-center font-bold text-[11px]">
-              {studentProfile?.name ? studentProfile.name[0].toUpperCase() : 'S'}
+          {studentProfile?.email ? (
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setActiveTab('profile')}
+                className="flex items-center space-x-2 bg-dark-card hover:bg-dark-border p-1.5 sm:px-3 sm:py-1.5 rounded-xl border border-slate-700/60 transition-all text-xs text-slate-300"
+              >
+                <div className="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold text-[11px]">
+                  {studentProfile.name ? studentProfile.name[0].toUpperCase() : 'S'}
+                </div>
+                <div className="hidden sm:flex flex-col text-left leading-tight">
+                  <span className="font-semibold text-white max-w-[100px] truncate">{studentProfile.name}</span>
+                  <span className="text-[10px] text-slate-400">{studentProfile.rollNumber || `CGPA ${studentProfile.cgpa}`}</span>
+                </div>
+              </button>
+
+              <button
+                onClick={onLogout}
+                title="Log Out"
+                className="p-2 text-slate-400 hover:text-red-400 bg-slate-800/60 hover:bg-slate-800 rounded-xl transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
             </div>
-            <span className="hidden sm:inline font-medium">
-              {studentProfile?.cgpa ? `CGPA ${studentProfile.cgpa}` : 'Profile'}
-            </span>
-          </button>
+          ) : (
+            <button
+              onClick={() => onOpenAuth('login')}
+              className="flex items-center space-x-2 bg-brand-600 hover:bg-brand-500 text-white px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow-glow-sm transition-all"
+            >
+              <LogIn className="w-3.5 h-3.5" />
+              <span>Log In / Sign Up</span>
+            </button>
+          )}
         </div>
       </div>
     </header>
   );
 };
+
