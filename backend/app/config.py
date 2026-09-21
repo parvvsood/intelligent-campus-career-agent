@@ -10,7 +10,9 @@ class Settings(BaseSettings):
 
     FOUNDRY_PROJECT_ENDPOINT: str = "https://your-foundry-project.cognitiveservices.azure.com/"
     FOUNDRY_AGENT_ID: str = "agent-campus-career-v1"
-    FOUNDRY_AGENT_NAME: str = "CampusCareerAgent"
+    FOUNDRY_AGENT_NAME: str = "CAMPUS-PLACEMENT-ASSISTENT"
+    FOUNDRY_AGENT_VERSION: str = "2"
+    FOUNDRY_API_KEY: str = ""
     FOUNDRY_API_VERSION: str = "2024-05-01-preview"
 
     AZURE_TENANT_ID: str = "placeholder-tenant-id"

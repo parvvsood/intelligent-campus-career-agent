@@ -334,29 +334,113 @@
   "parv2959.beai24@chitkara.edu.in": {
     "id": "user-e169889f",
     "email": "parv2959.beai24@chitkara.edu.in",
-    "password_hash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+    "password_hash": "c775e7b757ede630cd0aa1113bd102661ab38829ca52a6422ab782862f268646",
     "name": "Parv Sood",
-    "rollNumber": "2210991234",
+    "rollNumber": "1234567890",
     "branch": "Computer Science & Engineering",
-    "specialization": "Core Stream / General",
-    "cgpa": 8.5,
+    "specialization": "AI & Machine Learning",
+    "cgpa": 8.66,
     "graduationYear": 2028,
     "skills": [
       "Python",
       "SQL",
-      "Data Analysis"
+      "Data Analysis",
+      "PyTorch",
+      "TensorFlow"
     ],
     "preferredRoles": [
-      "Data Analyst & Analytics"
+      "Data Analyst & Analytics",
+      "AI / ML Engineer"
+    ],
+    "preferredLocations": [
+      "Bangalore",
+      "Gurugram",
+      "Remote",
+      "Pune",
+      "Mumbai"
+    ]
+  },
+  "teststudent_1790023344@campus.edu": {
+    "id": "user-7e31bcf3",
+    "email": "teststudent_1790023344@campus.edu",
+    "password_hash": "dda69783f28fdf6f1c5a83e8400f2472e9300887d1dffffe12a07b92a3d0aa25",
+    "name": "Test Student",
+    "rollNumber": "2210999999",
+    "branch": "Computer Science & Engineering",
+    "specialization": "Core Stream / General",
+    "cgpa": 8.9,
+    "graduationYear": 2026,
+    "skills": [
+      "Python",
+      "SQL",
+      "React",
+      "FastAPI",
+      "Machine Learning"
+    ],
+    "preferredRoles": [
+      "Data Analyst",
+      "SDE"
     ],
     "preferredLocations": [
       "Bangalore",
       "Gurugram"
     ]
   },
-  "teststudent_1790023344@campus.edu": {
-    "id": "user-7e31bcf3",
-    "email": "teststudent_1790023344@campus.edu",
+  "teststudent_1790023620@campus.edu": {
+    "id": "user-f83c3592",
+    "email": "teststudent_1790023620@campus.edu",
+    "password_hash": "dda69783f28fdf6f1c5a83e8400f2472e9300887d1dffffe12a07b92a3d0aa25",
+    "name": "Test Student",
+    "rollNumber": "2210999999",
+    "branch": "Computer Science & Engineering",
+    "specialization": "Core Stream / General",
+    "cgpa": 8.9,
+    "graduationYear": 2026,
+    "skills": [
+      "Python",
+      "SQL",
+      "React",
+      "FastAPI",
+      "Machine Learning"
+    ],
+    "preferredRoles": [
+      "Data Analyst",
+      "SDE"
+    ],
+    "preferredLocations": [
+      "Bangalore",
+      "Gurugram"
+    ]
+  },
+  "teststudent_1790024441@campus.edu": {
+    "id": "user-f6cfaf7b",
+    "email": "teststudent_1790024441@campus.edu",
+    "password_hash": "dda69783f28fdf6f1c5a83e8400f2472e9300887d1dffffe12a07b92a3d0aa25",
+    "name": "Test Student",
+    "rollNumber": "2210999999",
+    "branch": "Computer Science & Engineering",
+    "specialization": "Core Stream / General",
+    "cgpa": 8.9,
+    "graduationYear": 2026,
+    "skills": [
+      "Python",
+      "SQL",
+      "React",
+      "FastAPI",
+      "Machine Learning"
+    ],
+    "preferredRoles": [
+      "Data Analyst",
+      "SDE"
+    ],
+    "preferredLocations": [
+      "Bangalore",
+      "Gurugram"
+    ]
+  },
+  "teststudent_1790024615@campus.edu": {
+    "id": "user-5ca727be",
+    "email": "teststudent_1790024615@campus.edu",
     "password_hash": "dda69783f28fdf6f1c5a83e8400f2472e9300887d1dffffe12a07b92a3d0aa25",
     "name": "Test Student",
     "rollNumber": "2210999999",
