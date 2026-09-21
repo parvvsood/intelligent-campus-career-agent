@@ -142,20 +142,15 @@ export const Chat = ({ studentProfile, onOpenAuth }) => {
         )
       );
     } catch (err) {
-      console.warn('Backend API connection fallback active:', err);
-      // Clean fallback if dev server is restarting
+      console.warn('Backend API connection exception:', err);
       const agentMsg = {
         id: `m-${Date.now() + 1}`,
         sender: 'agent',
-        text: `### Campus Placement Response
+        text: `⚠️ **Connection to AI Career Agent Interrupted**
 
-Matching your query against recorded campus placement data for **${studentProfile?.branch || 'Engineering'}** (CGPA: **${studentProfile?.cgpa || 8.0}**):
+Could not reach the backend career service. Please ensure the backend server is running and try resending your message.
 
-- **Eligible Recruiters**: 15+ hiring companies actively visiting.
-- **Package Range**: 8.5 LPA to 24.0 LPA.
-- **Top In-Demand Skills**: SQL, Python, Problem Solving, Data Structures.
-
-Would you like me to generate a 4-week study plan or detail specific CGPA cutoffs?`,
+*Error details: ${err.message || 'Network request failed'}*`,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
 
