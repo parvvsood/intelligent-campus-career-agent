@@ -3,6 +3,7 @@ import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
 import { Home } from './pages/Home';
 import { Dashboard } from './pages/Dashboard';
+import { Chat } from './pages/Chat';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -32,7 +33,12 @@ export default function App() {
             setActiveTab={setActiveTab} 
           />
         )}
-        {activeTab !== 'home' && activeTab !== 'dashboard' && (
+        {activeTab === 'chat' && (
+          <Chat 
+            studentProfile={studentProfile} 
+          />
+        )}
+        {activeTab !== 'home' && activeTab !== 'dashboard' && activeTab !== 'chat' && (
           <div className="py-16 text-center space-y-4">
             <h2 className="text-xl font-bold text-white capitalize">{activeTab} Page</h2>
             <p className="text-slate-400">Page component building in progress for issue pipeline.</p>
@@ -40,7 +46,7 @@ export default function App() {
         )}
       </main>
 
-      <Footer />
+      {activeTab !== 'chat' && <Footer />}
     </div>
   );
 }
