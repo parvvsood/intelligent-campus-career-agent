@@ -11,7 +11,8 @@ async def custom_http_exception_handler(request: Request, exc):
         content={
             "error": True,
             "status_code": exc.status_code,
-            "message": exc.detail or "An error occurred while processing your request.",
+            "detail": str(exc.detail) if exc.detail else "An error occurred while processing your request.",
+            "message": str(exc.detail) if exc.detail else "An error occurred while processing your request.",
             "path": request.url.path
         }
     )
@@ -23,7 +24,8 @@ async def generic_exception_handler(request: Request, exc: Exception):
         content={
             "error": True,
             "status_code": 500,
-            "message": "Internal server error. The career agent engine is recovering gracefully.",
+            "detail": f"Internal server error: {str(exc)}",
+            "message": f"Internal server error: {str(exc)}",
             "path": request.url.path
         }
     )

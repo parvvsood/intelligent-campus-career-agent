@@ -26,6 +26,8 @@ def _to_profile_response(user: dict) -> UserProfileResponse:
         preferredLocations=list(user.get("preferredLocations", []))
     )
 
+import traceback
+
 @router.post("/auth/register", response_model=AuthResponse, status_code=status.HTTP_201_CREATED, tags=["Authentication"])
 async def register_user(request: UserRegisterRequest):
     try:
@@ -38,8 +40,10 @@ async def register_user(request: UserRegisterRequest):
             message="User registration successful!"
         )
     except ValueError as e:
+        traceback.print_exc()
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Registration failed: {str(e)}")
 
 @router.post("/auth/login", response_model=AuthResponse, tags=["Authentication"])
