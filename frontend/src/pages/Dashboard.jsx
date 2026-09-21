@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   User, 
@@ -17,42 +17,78 @@ import {
 import { Button } from '../components/common/Button';
 import { Card } from '../components/common/Card';
 import { Badge } from '../components/common/Badge';
+import { fetchCareerPaths, fetchCompanies } from '../services/companyService';
 
 export const Dashboard = ({ studentProfile, setActiveTab, setSelectedCompany }) => {
-  const recommendedPaths = [
-    {
-      role: 'Data Analyst',
-      matchScore: '96% Match',
-      avgPackage: '8.5 - 14 LPA',
-      topCompanies: ['Deloitte', 'Amazon', 'Accenture', 'ZS Associates'],
-      keySkills: ['SQL', 'Python', 'Power BI', 'Excel', 'Statistics'],
-    },
-    {
-      role: 'AI / ML Engineer',
-      matchScore: '92% Match',
-      avgPackage: '12 - 22 LPA',
-      topCompanies: ['Microsoft', 'Amazon', 'NVIDIA', 'Goldman Sachs'],
-      keySkills: ['Python', 'PyTorch', 'FastAPI', 'Machine Learning', 'Data Pipelines'],
-    },
-    {
-      role: 'Software Development Engineer (SDE)',
-      matchScore: '88% Match',
-      avgPackage: '10 - 18 LPA',
-      topCompanies: ['Amazon', 'Flipkart', 'Cisco', 'Infosys Specialist'],
-      keySkills: ['Data Structures', 'Java/C++', 'System Design', 'Git', 'REST API'],
-    },
-  ];
+  const [careerPaths, setCareerPaths] = useState([]);
+  const [suggestedCompanies, setSuggestedCompanies] = useState([]);
+  const [loadingPaths, setLoadingPaths] = useState(true);
 
-  const suggestedCompanies = [
-    { name: 'Deloitte USI', role: 'Data Analyst', package: '8.5 LPA', cutoff: '6.5 CGPA', location: 'Pan-India', status: 'Eligible' },
-    { name: 'Amazon', role: 'SDE-1 & Data Engineer', package: '18.0 LPA', cutoff: '7.5 CGPA', location: 'Bangalore / Hyderabad', status: 'Eligible' },
-    { name: 'ZS Associates', role: 'Business Technology Analyst', package: '13.5 LPA', cutoff: '7.0 CGPA', location: 'Gurgaon / Pune', status: 'Eligible' },
-    { name: 'Microsoft', role: 'Software Engineer', package: '24.0 LPA', cutoff: '8.0 CGPA', location: 'Hyderabad / Noida', status: 'Eligible' },
-  ];
+  useEffect(() => {
+    const loadDashboardData = async () => {
+      setLoadingPaths(true);
+      try {
+        // Fetch dynamic career paths based on student skills
+        const pathData = await fetchCareerPaths(studentProfile.skills, studentProfile.cgpa);
+        if (pathData && pathData.career_paths) {
+          setCareerPaths(pathData.career_paths);
+        }
+
+        // Fetch real suggested companies
+        const companyData = await fetchCompanies(null, studentProfile.cgpa);
+        if (companyData && companyData.companies) {
+          setSuggestedCompanies(companyData.companies.slice(0, 6));
+        }
+      } catch (err) {
+        console.warn('Dashboard API fallback active:', err);
+        // Fallback calculation directly in frontend if backend server is reloading
+        calculateFallbackPaths();
+      } finally {
+        setLoadingPaths(false);
+      }
+    };
+
+    loadDashboardData();
+  }, [studentProfile]);
+
+  const calculateFallbackPaths = () => {
+    const skillsLower = studentProfile.skills.map(s => s.toLowerCase());
+    
+    // Skill match logic
+    const isAnalyst = skillsLower.some(s => ['sql', 'python', 'excel', 'power bi', 'data analysis'].includes(s));
+    const isAI = skillsLower.some(s => ['python', 'machine learning', 'pytorch', 'tensorflow', 'deep learning'].includes(s));
+    const isSDE = skillsLower.some(s => ['data structures', 'algorithms', 'java', 'c++', 'react'].includes(s));
+
+    const paths = [
+      {
+        role: 'Data Analyst & Analytics',
+        matchScore: isAnalyst ? '96% Match' : '82% Match',
+        avgPackage: '7.5 - 14.0 LPA',
+        topCompanies: ['Deloitte USI', 'ZS Associates', 'Amazon', 'Sprinkle Data'],
+        keySkills: ['SQL', 'Python', 'Power BI', 'Excel', 'Data Warehousing'],
+      },
+      {
+        role: 'AI / ML Engineer & Data Science',
+        matchScore: isAI ? '94% Match' : '78% Match',
+        avgPackage: '12.0 - 25.0 LPA',
+        topCompanies: ['Microsoft', 'Google', 'CELEBAL', 'Optmyzr'],
+        keySkills: ['Python', 'PyTorch', 'FastAPI', 'Machine Learning', 'SQL'],
+      },
+      {
+        role: 'Software Development Engineer (SDE-1)',
+        matchScore: isSDE ? '92% Match' : '80% Match',
+        avgPackage: '10.0 - 24.0 LPA',
+        topCompanies: ['Amazon', 'Microsoft', 'FICO', 'Juspay'],
+        keySkills: ['Data Structures', 'Java/C++', 'System Design', 'Algorithms', 'SQL'],
+      },
+    ];
+
+    setCareerPaths(paths);
+  };
 
   const recentConversations = [
-    { title: 'Which companies hire for Data Analyst roles with CGPA 8.5?', time: '2 hours ago', tag: 'Placement Query' },
-    { title: 'What skills should I prepare for Deloitte Analyst round?', time: 'Yesterday', tag: 'Skill Analysis' },
+    { title: 'Which companies hire for Data Analyst roles with CGPA ' + studentProfile.cgpa + '?', time: '2 hours ago', tag: 'Placement Query' },
+    { title: 'What skills should I prepare for Deloitte & ZS Associates Analyst round?', time: 'Yesterday', tag: 'Skill Analysis' },
     { title: 'Provide a 4-week study plan for Python and SQL', time: '3 days ago', tag: 'Study Plan' },
   ];
 
@@ -94,16 +130,18 @@ export const Dashboard = ({ studentProfile, setActiveTab, setSelectedCompany }) 
             </div>
             <div className="bg-dark-bg/60 p-3 rounded-xl border border-slate-800">
               <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Eligible Companies</p>
-              <p className="text-lg font-bold text-brand-400">18+ Campus Drives</p>
+              <p className="text-lg font-bold text-brand-400">20+ PDF Recruiter Drives</p>
             </div>
             <div className="bg-dark-bg/60 p-3 rounded-xl border border-slate-800">
-              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Skill Match</p>
-              <p className="text-lg font-bold text-cyan-400">92% Ready</p>
+              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Top Path Match</p>
+              <p className="text-lg font-bold text-cyan-400">
+                {careerPaths.length > 0 ? careerPaths[0].matchScore : '94% Match'}
+              </p>
             </div>
           </div>
 
           <div>
-            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">My Active Skills</p>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">My Active Skills ({studentProfile.skills.length})</p>
             <div className="flex flex-wrap gap-1.5">
               {studentProfile.skills.map((skill, index) => (
                 <span key={index} className="text-xs bg-slate-800/80 text-slate-200 px-2.5 py-1 rounded-lg border border-slate-700/60 font-medium">
@@ -122,7 +160,7 @@ export const Dashboard = ({ studentProfile, setActiveTab, setSelectedCompany }) 
               <span>Career Agent Actions</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Instantly query your placement knowledge base for custom insights and preparation roadmap.
+              Query 100+ PDF campus recruiter drives for custom skill gap analysis and eligibility.
             </p>
           </div>
 
@@ -154,35 +192,37 @@ export const Dashboard = ({ studentProfile, setActiveTab, setSelectedCompany }) 
               onClick={() => setActiveTab('companies')}
               className="w-full justify-start text-xs"
             >
-              Browse Campus Companies
+              Browse 100+ Recruiter Drives
             </Button>
           </div>
         </Card>
       </div>
 
-      {/* Recommended Career Paths */}
+      {/* Recommended Career Paths (Dynamically Computed from Skills) */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-xl font-bold text-white flex items-center space-x-2">
               <TrendingUp className="w-5 h-5 text-brand-400" />
-              <span>Recommended Career Paths</span>
+              <span>Recommended Career Paths (Skill-Based Engine)</span>
             </h2>
-            <p className="text-xs text-slate-400">Based on your CGPA ({studentProfile.cgpa}) and skill portfolio.</p>
+            <p className="text-xs text-slate-400">
+              Dynamically calculated matching your skill portfolio (`{studentProfile.skills.join(', ')}`) against PDF placement drives.
+            </p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {recommendedPaths.map((path, idx) => (
+          {careerPaths.map((path, idx) => (
             <Card key={idx} hoverEffect className="space-y-4 flex flex-col justify-between">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-white text-base">{path.role}</h3>
+                  <h3 className="font-bold text-white text-base truncate">{path.role}</h3>
                   <Badge variant="success">{path.matchScore}</Badge>
                 </div>
                 
                 <div className="text-xs text-slate-400">
-                  <span>Avg Package: </span>
+                  <span>CTC Package Range: </span>
                   <span className="font-semibold text-emerald-400">{path.avgPackage}</span>
                 </div>
 
@@ -198,10 +238,10 @@ export const Dashboard = ({ studentProfile, setActiveTab, setSelectedCompany }) 
                 </div>
 
                 <div>
-                  <p className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider mb-1.5">Key Required Skills</p>
+                  <p className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider mb-1.5">Key Target Skills</p>
                   <div className="flex flex-wrap gap-1">
                     {path.keySkills.map((s, i) => (
-                      <span key={i} className="text-[11px] bg-brand-500/10 text-brand-300 px-2 py-0.5 rounded border border-brand-500/20">
+                      <span key={i} className="text-[11px] bg-brand-500/10 text-brand-300 px-2 py-0.5 rounded border border-brand-500/20 capitalize">
                         {s}
                       </span>
                     ))}
@@ -232,13 +272,13 @@ export const Dashboard = ({ studentProfile, setActiveTab, setSelectedCompany }) 
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-bold text-white flex items-center space-x-2">
               <Building2 className="w-5 h-5 text-indigo-400" />
-              <span>Suggested Recruiting Companies</span>
+              <span>Campus Recruiter Drives (PDF Data)</span>
             </h2>
             <button
               onClick={() => setActiveTab('companies')}
               className="text-xs text-brand-400 hover:text-brand-300 font-semibold"
             >
-              View All 20+ Companies →
+              View All Recruiter Drives →
             </button>
           </div>
 
@@ -248,14 +288,14 @@ export const Dashboard = ({ studentProfile, setActiveTab, setSelectedCompany }) 
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="font-bold text-white text-sm">{comp.name}</h3>
-                    <p className="text-xs text-slate-400">{comp.role}</p>
+                    <p className="text-xs text-slate-400">{comp.roles ? comp.roles[0] : comp.role}</p>
                   </div>
-                  <Badge variant="brand">{comp.package}</Badge>
+                  <Badge variant="brand">{comp.package_ctc || comp.package}</Badge>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-400 pt-2 border-t border-slate-800">
-                  <div>Cutoff: <span className="text-slate-200 font-medium">{comp.cutoff}</span></div>
-                  <div>Location: <span className="text-slate-200 font-medium truncate">{comp.location}</span></div>
+                  <div>Cutoff: <span className="text-slate-200 font-medium">{comp.cgpa_cutoff || comp.cutoff} CGPA</span></div>
+                  <div>Location: <span className="text-slate-200 font-medium truncate">{comp.primary_location || comp.location}</span></div>
                 </div>
 
                 <div className="flex items-center justify-between pt-1">

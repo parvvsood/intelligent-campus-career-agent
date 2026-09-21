@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Query
-from typing import Optional, List
+from fastapi import APIRouter, Query, Body
+from typing import Optional, List, Dict, Any
 from app.services.placement_data import placement_db
 
 router = APIRouter()
@@ -18,4 +18,14 @@ async def get_companies(
     return {
         "count": len(companies),
         "companies": companies
+    }
+
+@router.post("/career-paths", tags=["Companies"])
+async def get_recommended_career_paths(payload: Dict[str, Any] = Body(...)):
+    skills = payload.get("skills", ["Python", "SQL", "Data Analysis"])
+    cgpa = payload.get("cgpa", 8.0)
+    paths = placement_db.get_dynamic_career_paths(student_skills=skills, student_cgpa=cgpa)
+    return {
+        "count": len(paths),
+        "career_paths": paths
     }
