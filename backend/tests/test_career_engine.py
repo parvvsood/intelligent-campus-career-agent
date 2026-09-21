@@ -11,3 +11,10 @@ def test_company_recommendation_query():
     assert "Deloitte" in res["answer"] or "Data Analyst" in res["answer"]
     assert "metadata" in res
     assert "companies" in res["metadata"]
+
+def test_skill_study_plan_query():
+    res = career_engine.process_query("What skills should I prepare for Data Analyst placements and give me a study plan?")
+    assert "SQL" in res["answer"]
+    assert "metadata" in res
+    assert "studyPlan" in res["metadata"]
+    assert len(res["metadata"]["studyPlan"]) >= 3
