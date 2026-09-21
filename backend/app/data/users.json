@@ -1,0 +1,79 @@
+{
+  "alex@campus.edu": {
+    "id": "user-default-101",
+    "email": "alex@campus.edu",
+    "password_hash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+    "name": "Alex Student",
+    "rollNumber": "2210991234",
+    "branch": "Computer Science & Engineering",
+    "cgpa": 8.7,
+    "graduationYear": 2026,
+    "skills": [
+      "Python",
+      "SQL",
+      "Data Analysis",
+      "React",
+      "Machine Learning"
+    ],
+    "preferredRoles": [
+      "Data Analyst",
+      "AI/ML Engineer"
+    ],
+    "preferredLocations": [
+      "Bangalore",
+      "Gurugram",
+      "Hyderabad",
+      "Remote"
+    ]
+  },
+  "teststudent@campus.edu": {
+    "id": "user-3ed3fdcc",
+    "email": "teststudent@campus.edu",
+    "password_hash": "dda69783f28fdf6f1c5a83e8400f2472e9300887d1dffffe12a07b92a3d0aa25",
+    "name": "Test Student",
+    "rollNumber": "2210999999",
+    "branch": "Computer Science & Engineering",
+    "cgpa": 8.9,
+    "graduationYear": 2026,
+    "skills": [
+      "Python",
+      "SQL",
+      "React",
+      "FastAPI",
+      "Machine Learning"
+    ],
+    "preferredRoles": [
+      "Data Analyst",
+      "SDE"
+    ],
+    "preferredLocations": [
+      "Bangalore",
+      "Gurugram"
+    ]
+  },
+  "teststudent_1790003353@campus.edu": {
+    "id": "user-ff574d72",
+    "email": "teststudent_1790003353@campus.edu",
+    "password_hash": "dda69783f28fdf6f1c5a83e8400f2472e9300887d1dffffe12a07b92a3d0aa25",
+    "name": "Test Student",
+    "rollNumber": "2210999999",
+    "branch": "Computer Science & Engineering",
+    "cgpa": 8.9,
+    "graduationYear": 2026,
+    "skills": [
+      "Python",
+      "SQL",
+      "React",
+      "FastAPI",
+      "Machine Learning"
+    ],
+    "preferredRoles": [
+      "Data Analyst",
+      "SDE"
+    ],
+    "preferredLocations": [
+      "Bangalore",
+      "Gurugram"
+    ]
+  }
+}

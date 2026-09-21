@@ -1,12 +1,12 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
-from app.api import health, chat, companies
+from app.api import health, chat, companies, auth
 from app.utils.exception_handlers import custom_http_exception_handler, generic_exception_handler
 
 app = FastAPI(
     title="Intelligent Campus Career Agent API",
-    description="FastAPI backend providing career placement analytics, Microsoft Foundry integration, and skill preparation workflows.",
+    description="FastAPI backend providing career placement analytics, Microsoft Foundry integration, user authentication, and skill preparation workflows.",
     version="1.0.0",
 )
 
@@ -27,6 +27,7 @@ app.add_middleware(
 
 # Include Routers
 app.include_router(health.router, prefix="/api")
+app.include_router(auth.router, prefix="/api")
 app.include_router(chat.router, prefix="/api")
 app.include_router(companies.router, prefix="/api")
 

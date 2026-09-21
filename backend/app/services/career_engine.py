@@ -30,15 +30,17 @@ class CareerEngineService:
         table_rows = []
         company_metadata = []
         for c in matched:
+            roles_list = c.get('roles') or ([c.get('role')] if c.get('role') else ["Software Engineer"])
+            primary_loc = c.get('primary_location') or c.get('location', 'Pan India')
             table_rows.append(
-                f"| **{c['name']}** | {c['package_ctc']} | {c['cgpa_cutoff']} CGPA | {', '.join(c['roles'][:2])} | {c['primary_location']} |"
+                f"| **{c['name']}** | {c.get('package_ctc', 'N/A')} | {c.get('cgpa_cutoff', 6.0)} CGPA | {', '.join(roles_list[:2])} | {primary_loc} |"
             )
             company_metadata.append({
                 "name": c['name'],
-                "role": c['roles'][0],
-                "package": c['package_ctc'],
-                "cutoff": f"{c['cgpa_cutoff']} CGPA",
-                "location": c['primary_location']
+                "role": roles_list[0],
+                "package": c.get('package_ctc', 'N/A'),
+                "cutoff": f"{c.get('cgpa_cutoff', 6.0)} CGPA",
+                "location": primary_loc
             })
 
         table_str = "\n".join(table_rows)
@@ -52,7 +54,7 @@ Based on verified campus placement records for **{branch}** (Your CGPA: **{cgpa}
 {table_str}
 
 ### Key Recruitment Insights:
-- **CGPA Eligibility Status**: {len([c for c in matched if c['cgpa_cutoff'] <= cgpa])} out of {len(matched)} matching recruiters are within your current CGPA range.
+- **CGPA Eligibility Status**: {len([c for c in matched if c.get('cgpa_cutoff', 6.0) <= cgpa])} out of {len(matched)} matching recruiters are within your current CGPA range.
 - **Top In-Demand Skills**: SQL, Python, Problem Solving, Data Structures, Power BI.
 - **Recruitment Window**: Drives conducted across 2024–2026 placement cycles."""
 
@@ -125,7 +127,11 @@ Your Current Skills: `{', '.join(existing_skills)}`
         if not matched_comp:
             matched_comp = placement_db.get_all_companies()[0]
 
-        fact = matched_comp.get("fact_remarks", f"Recruiter visited campus offering {matched_comp['package_ctc']} for {matched_comp['roles'][0]}.")
+        roles_list = matched_comp.get('roles') or ([matched_comp.get('role')] if matched_comp.get('role') else ["Software Engineer"])
+        years_list = matched_comp.get('placement_years') or ([matched_comp.get('date')[:4]] if matched_comp.get('date') else ["2024"])
+        max_backlogs = matched_comp.get('max_backlogs', 0)
+
+        fact = matched_comp.get("fact_remarks", f"Recruiter visited campus offering {matched_comp.get('package_ctc', 'N/A')} for {roles_list[0]}.")
         obs = matched_comp.get("observation_remarks", "Candidates clearing initial technical screening exhibit strong fundamental coding ability.")
 
         answer_markdown = f"""### Data-Grounded Remarks for **{matched_comp['name']}**
@@ -135,16 +141,16 @@ Your Current Skills: `{', '.join(existing_skills)}`
 
 **FACT (VERIFIED CAMPUS PLACEMENT DATABASE)**:
 - {fact}
-- **Package Offered**: **{matched_comp['package_ctc']}**
-- **Min Eligibility Cutoff**: **{matched_comp['cgpa_cutoff']} CGPA** (Backlogs: {matched_comp['max_backlogs']})
-- **Roles Offered**: {', '.join(matched_comp['roles'])}
-- **Hiring Window**: {', '.join(matched_comp['placement_years'])}
+- **Package Offered**: **{matched_comp.get('package_ctc', 'N/A')}**
+- **Min Eligibility Cutoff**: **{matched_comp.get('cgpa_cutoff', 6.0)} CGPA** (Backlogs: {max_backlogs})
+- **Roles Offered**: {', '.join(roles_list)}
+- **Hiring Window**: {', '.join(years_list)}
 
 ---
 
 **DATA-BASED OBSERVATION**:
 - {obs}
-- **Key Required Tech Stack**: `{', '.join(matched_comp['required_skills'])}`
+- **Key Required Tech Stack**: `{', '.join(matched_comp.get('required_skills', []))}`
 
 *Note: Remarks are grounded strictly in recorded college placement data. Culture, unrecorded salaries, or unverified claims are omitted.*"""
 
