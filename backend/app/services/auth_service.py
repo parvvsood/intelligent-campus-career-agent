@@ -56,23 +56,28 @@ class AuthService:
         return hashlib.sha256(password.encode("utf-8")).hexdigest()
 
     def register_user(self, user_data: Dict[str, Any]) -> Dict[str, Any]:
-        email = user_data["email"].lower().strip()
-        user_id = self.users[email]["id"] if email in self.users else f"user-{uuid.uuid4().hex[:8]}"
-        password_hash = self._hash_password(user_data["password"])
+        email = str(user_data.get("email", "")).lower().strip()
+        if not email:
+            raise ValueError("Email address is required for registration.")
+
+        existing_user = self.users.get(email, {})
+        user_id = existing_user.get("id") or f"user-{uuid.uuid4().hex[:8]}"
+        password_str = str(user_data.get("password", "password123"))
+        password_hash = self._hash_password(password_str)
 
         new_user = {
             "id": user_id,
             "email": email,
             "password_hash": password_hash,
-            "name": user_data["name"],
-            "rollNumber": user_data["rollNumber"],
-            "branch": user_data.get("branch", "Computer Science & Engineering"),
-            "specialization": user_data.get("specialization", "Core Stream / General"),
+            "name": str(user_data.get("name", "Student")),
+            "rollNumber": str(user_data.get("rollNumber", "")),
+            "branch": str(user_data.get("branch", "Computer Science & Engineering")),
+            "specialization": str(user_data.get("specialization", "Core Stream / General")),
             "cgpa": float(user_data.get("cgpa", 8.0)),
             "graduationYear": int(user_data.get("graduationYear", 2028)),
-            "skills": user_data.get("skills", []),
-            "preferredRoles": user_data.get("preferredRoles", []),
-            "preferredLocations": user_data.get("preferredLocations", [])
+            "skills": list(user_data.get("skills", [])),
+            "preferredRoles": list(user_data.get("preferredRoles", [])),
+            "preferredLocations": list(user_data.get("preferredLocations", []))
         }
 
         self.users[email] = new_user

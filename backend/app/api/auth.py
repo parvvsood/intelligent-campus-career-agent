@@ -13,17 +13,17 @@ router = APIRouter()
 
 def _to_profile_response(user: dict) -> UserProfileResponse:
     return UserProfileResponse(
-        id=user["id"],
-        email=user["email"],
-        name=user["name"],
-        rollNumber=user["rollNumber"],
-        branch=user.get("branch", "Computer Science & Engineering"),
-        specialization=user.get("specialization", "Core CSE"),
-        cgpa=user["cgpa"],
-        graduationYear=user["graduationYear"],
-        skills=user.get("skills", []),
-        preferredRoles=user.get("preferredRoles", []),
-        preferredLocations=user.get("preferredLocations", [])
+        id=str(user.get("id", f"user-{uuid.uuid4().hex[:6]}")),
+        email=str(user.get("email", "")),
+        name=str(user.get("name", "Student")),
+        rollNumber=str(user.get("rollNumber", "")),
+        branch=str(user.get("branch", "Computer Science & Engineering")),
+        specialization=str(user.get("specialization", "Core Stream / General")),
+        cgpa=float(user.get("cgpa", 8.0)),
+        graduationYear=int(user.get("graduationYear", 2028)),
+        skills=list(user.get("skills", [])),
+        preferredRoles=list(user.get("preferredRoles", [])),
+        preferredLocations=list(user.get("preferredLocations", []))
     )
 
 @router.post("/auth/register", response_model=AuthResponse, status_code=status.HTTP_201_CREATED, tags=["Authentication"])
