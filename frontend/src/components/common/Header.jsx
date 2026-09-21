@@ -13,16 +13,16 @@ export const Header = ({ activeTab, setActiveTab, studentProfile, onOpenAuth, on
   return (
     <header className="sticky top-0 z-40 w-full glass-panel border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* SkillRouter Primary Brand Logo */}
+        {/* SkillRouter Native Brand Logo */}
         <button 
           onClick={() => setActiveTab('home')}
           aria-label="SkillRouter Home"
-          className="flex items-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-500/50 rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98]"
+          className="flex items-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-500/50 rounded-lg transition-all duration-200 hover:opacity-95 hover:scale-[1.02] active:scale-[0.98]"
         >
           <img 
             src="/skillrouter-logo.png" 
             alt="SkillRouter" 
-            className="w-[145px] sm:w-[165px] md:w-[175px] h-auto object-contain max-h-11"
+            className="w-[135px] sm:w-[155px] md:w-[165px] h-auto object-contain max-h-10 drop-shadow-sm"
           />
         </button>
 

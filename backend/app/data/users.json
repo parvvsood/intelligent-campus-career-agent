@@ -541,5 +541,31 @@
       "Bangalore",
       "Gurugram"
     ]
+  },
+  "teststudent_1790028324@campus.edu": {
+    "id": "user-17146b54",
+    "email": "teststudent_1790028324@campus.edu",
+    "password_hash": "dda69783f28fdf6f1c5a83e8400f2472e9300887d1dffffe12a07b92a3d0aa25",
+    "name": "Test Student",
+    "rollNumber": "2210999999",
+    "branch": "Computer Science & Engineering",
+    "specialization": "Core Stream / General",
+    "cgpa": 8.9,
+    "graduationYear": 2026,
+    "skills": [
+      "Python",
+      "SQL",
+      "React",
+      "FastAPI",
+      "Machine Learning"
+    ],
+    "preferredRoles": [
+      "Data Analyst",
+      "SDE"
+    ],
+    "preferredLocations": [
+      "Bangalore",
+      "Gurugram"
+    ]
   }
 }
