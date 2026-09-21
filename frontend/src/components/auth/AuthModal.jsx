@@ -54,6 +54,7 @@ export const AuthModal = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login
     password: '',
     rollNumber: '',
     branch: 'Computer Science & Engineering',
+    specialization: 'Core CSE',
     cgpa: '8.5',
     graduationYear: '2028',
     skills: ['Python', 'SQL', 'Data Analysis'],
@@ -370,12 +371,29 @@ export const AuthModal = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login
                     onChange={(e) => handleInputChange('branch', e.target.value)}
                     className="w-full px-4 py-2.5 bg-dark-bg border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-brand-500"
                   >
-                    <option value="Computer Science & Engineering">Computer Science & Engineering</option>
-                    <option value="Artificial Intelligence & Data Science">Artificial Intelligence & Data Science</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Electronics & Communication Engineering">Electronics & Communication Engineering</option>
-                    <option value="Electrical Engineering">Electrical Engineering</option>
-                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Computer Science & Engineering">Computer Science & Engineering (CSE)</option>
+                    <option value="Information Technology">Information Technology (IT)</option>
+                    <option value="Electronics & Communication Engineering">Electronics & Communication Engineering (ECE)</option>
+                    <option value="Electrical Engineering">Electrical Engineering (EE)</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering (ME)</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1">Specialization Track *</label>
+                  <select
+                    value={formData.specialization}
+                    onChange={(e) => handleInputChange('specialization', e.target.value)}
+                    className="w-full px-4 py-2.5 bg-dark-bg border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-brand-500"
+                  >
+                    <option value="Core CSE">Core CSE (General Computer Science)</option>
+                    <option value="CSE - AI & Machine Learning">CSE - AI & Machine Learning (AI/ML)</option>
+                    <option value="CSE - AI & Future Technologies">CSE - AI & Future Technologies</option>
+                    <option value="CSE - Data Science & Analytics">CSE - Data Science & Analytics</option>
+                    <option value="CSE - Cyber Security & Digital Forensics">CSE - Cyber Security & Digital Forensics</option>
+                    <option value="CSE - Cloud Computing & DevOps">CSE - Cloud Computing & DevOps</option>
+                    <option value="General Engineering">General / Core Stream</option>
                   </select>
                 </div>
 

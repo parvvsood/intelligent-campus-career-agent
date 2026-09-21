@@ -138,6 +138,14 @@ export const Profile = ({ studentProfile, setStudentProfile, setActiveTab, onOpe
             />
 
             <Input
+              label="Specialization Track"
+              name="specialization"
+              value={formData.specialization || 'Core CSE'}
+              onChange={handleInputChange}
+              placeholder="e.g. CSE - AI & Machine Learning"
+            />
+
+            <Input
               label="Current CGPA (Out of 10.0)"
               name="cgpa"
               type="number"

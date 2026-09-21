@@ -101,9 +101,36 @@
       "Gurugram"
     ]
   },
-  "teststudent_1790020800@campus.edu": {
-    "id": "user-df506b7f",
-    "email": "teststudent_1790020800@campus.edu",
+  "parvsood2408@gmail.com": {
+    "id": "user-48629824",
+    "email": "parvsood2408@gmail.com",
+    "password_hash": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "name": "Parv Sood",
+    "rollNumber": "23423432",
+    "branch": "Computer Science & Engineering",
+    "cgpa": 8.66,
+    "graduationYear": 2026,
+    "skills": [
+      "Python",
+      "SQL",
+      "Data Analysis",
+      "Deep Learning",
+      "Natural Language Processing (NLP)",
+      "PySpark",
+      "RAG Architecture"
+    ],
+    "preferredRoles": [
+      "Data Analyst & Analytics"
+    ],
+    "preferredLocations": [
+      "Bangalore",
+      "Gurugram",
+      "Remote"
+    ]
+  },
+  "teststudent_1790021452@campus.edu": {
+    "id": "user-daef23c9",
+    "email": "teststudent_1790021452@campus.edu",
     "password_hash": "dda69783f28fdf6f1c5a83e8400f2472e9300887d1dffffe12a07b92a3d0aa25",
     "name": "Test Student",
     "rollNumber": "2210999999",
