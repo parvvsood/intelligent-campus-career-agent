@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Sparkles, Trash2, RotateCw, PanelLeft, Bot, AlertCircle } from 'lucide-react';
+import { Send, Sparkles, Trash2, RotateCw, PanelLeft, Bot, AlertCircle, Lock, LogIn, UserPlus } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { ChatSidebar } from '../components/chat/ChatSidebar';
 import { MessageItem } from '../components/chat/MessageItem';
 import { PromptSuggestions } from '../components/chat/PromptSuggestions';
@@ -7,7 +8,38 @@ import { TypingIndicator } from '../components/chat/TypingIndicator';
 import { Button } from '../components/common/Button';
 import { sendChatMessage } from '../services/chatService';
 
-export const Chat = ({ studentProfile }) => {
+export const Chat = ({ studentProfile, onOpenAuth }) => {
+  // UNAUTHENTICATED TOKEN PROTECTION GUARD
+  if (!studentProfile || !studentProfile.email) {
+    return (
+      <div className="max-w-2xl mx-auto py-16 px-4 text-center space-y-6">
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="w-20 h-20 rounded-3xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center mx-auto text-brand-400 shadow-glow-sm"
+        >
+          <Lock className="w-10 h-10" />
+        </motion.div>
+
+        <div className="space-y-3">
+          <h2 className="text-3xl font-extrabold text-white tracking-tight">AI Career Chat Locked</h2>
+          <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
+            To protect Microsoft Foundry AI tokens from unauthorized usage, you must log in or sign up with your student account before conversing with your AI Career Agent.
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <Button variant="primary" size="lg" icon={LogIn} onClick={() => onOpenAuth && onOpenAuth('login')}>
+            Log In to Account
+          </Button>
+          <Button variant="secondary" size="lg" icon={UserPlus} onClick={() => onOpenAuth && onOpenAuth('signup')}>
+            Sign Up (New Student)
+          </Button>
+        </div>
+      </div>
+    );
+  }
   const [sessions, setSessions] = useState([
     {
       id: 'session-1',

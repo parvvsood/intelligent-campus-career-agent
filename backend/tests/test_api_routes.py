@@ -24,6 +24,7 @@ def test_chat_endpoint_valid_query():
         "conversation_id": "test-session-123",
         "student_profile": {
             "name": "QA Tester",
+            "email": "qatester@campus.edu",
             "branch": "Computer Science & Engineering",
             "cgpa": 8.5
         }
@@ -35,7 +36,18 @@ def test_chat_endpoint_valid_query():
     assert data["conversation_id"] == "test-session-123"
     assert "metadata" in data
 
+def test_chat_endpoint_unauthenticated_blocked():
+    payload = {
+        "message": "Which companies hire for Data Analyst roles?",
+        "conversation_id": "test-session-123"
+    }
+    response = client.post("/api/chat", json=payload)
+    assert response.status_code == 401
+
 def test_chat_endpoint_empty_query():
-    payload = {"message": "   "}
+    payload = {
+        "message": "   ",
+        "student_profile": {"email": "qatester@campus.edu"}
+    }
     response = client.post("/api/chat", json=payload)
     assert response.status_code == 400

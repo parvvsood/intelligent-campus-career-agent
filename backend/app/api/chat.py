@@ -16,6 +16,11 @@ async def process_chat_message(request: ChatRequest):
         clean_message = sanitize_user_input(raw_msg)
         conv_id = request.conversation_id or f"conv-{uuid.uuid4().hex[:8]}"
         profile_dict = request.student_profile.model_dump() if request.student_profile else {}
+        if not profile_dict or not profile_dict.get("email"):
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Authentication required to send chat queries and consume AI tokens. Please log in or sign up first."
+            )
 
         # Invoke Foundry Service Adapter
         result = await foundry_service.send_message_to_agent(

@@ -3,6 +3,7 @@ from typing import Optional, Dict, Any, List
 
 class StudentProfileSchema(BaseModel):
     name: Optional[str] = "Student"
+    email: Optional[str] = None
     branch: Optional[str] = "Computer Science & Engineering"
     cgpa: Optional[float] = 8.0
     graduationYear: Optional[int] = 2026
