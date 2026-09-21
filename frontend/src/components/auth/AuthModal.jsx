@@ -121,7 +121,11 @@ export const AuthModal = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login
       onAuthSuccess(res.user);
       onClose();
     } catch (err) {
-      setErrorMsg(err.response?.data?.detail || 'Invalid login credentials. Please try again.');
+      const msg = err.response?.data?.detail 
+        || (typeof err.response?.data === 'string' ? err.response.data : null) 
+        || err.message 
+        || 'Invalid login credentials. Please try again.';
+      setErrorMsg(msg);
     } finally {
       setLoading(false);
     }
@@ -145,7 +149,11 @@ export const AuthModal = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login
       onAuthSuccess(res.user);
       onClose();
     } catch (err) {
-      setErrorMsg(err.response?.data?.detail || 'Registration failed. Please verify your input and try again.');
+      const msg = err.response?.data?.detail 
+        || (typeof err.response?.data === 'string' ? err.response.data : null) 
+        || err.message 
+        || 'Registration failed. Please try again.';
+      setErrorMsg(msg);
     } finally {
       setLoading(false);
     }
