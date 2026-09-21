@@ -4,6 +4,7 @@ import { Footer } from './components/common/Footer';
 import { Home } from './pages/Home';
 import { Dashboard } from './pages/Dashboard';
 import { Chat } from './pages/Chat';
+import { Companies } from './pages/Companies';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -16,6 +17,10 @@ export default function App() {
     preferredRoles: ['Data Analyst', 'AI/ML Engineer'],
     preferredLocations: ['Bangalore', 'Gurgaon', 'Hyderabad', 'Remote'],
   });
+
+  const handleAskAboutCompany = (promptText) => {
+    setActiveTab('chat');
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-dark-bg text-slate-100 font-sans">
@@ -38,7 +43,14 @@ export default function App() {
             studentProfile={studentProfile} 
           />
         )}
-        {activeTab !== 'home' && activeTab !== 'dashboard' && activeTab !== 'chat' && (
+        {activeTab === 'companies' && (
+          <Companies 
+            studentProfile={studentProfile} 
+            setActiveTab={setActiveTab} 
+            onAskAboutCompany={handleAskAboutCompany}
+          />
+        )}
+        {activeTab !== 'home' && activeTab !== 'dashboard' && activeTab !== 'chat' && activeTab !== 'companies' && (
           <div className="py-16 text-center space-y-4">
             <h2 className="text-xl font-bold text-white capitalize">{activeTab} Page</h2>
             <p className="text-slate-400">Page component building in progress for issue pipeline.</p>
