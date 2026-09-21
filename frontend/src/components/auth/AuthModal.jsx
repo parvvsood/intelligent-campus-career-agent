@@ -55,7 +55,7 @@ export const AuthModal = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login
     rollNumber: '',
     branch: 'Computer Science & Engineering',
     cgpa: '8.5',
-    graduationYear: '2026',
+    graduationYear: '2028',
     skills: ['Python', 'SQL', 'Data Analysis'],
     preferredRoles: ['Data Analyst & Analytics'],
     preferredLocations: ['Bangalore', 'Gurugram', 'Remote']
@@ -356,6 +356,9 @@ export const AuthModal = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login
                       <option value="2025">2025</option>
                       <option value="2026">2026</option>
                       <option value="2027">2027</option>
+                      <option value="2028">2028</option>
+                      <option value="2029">2029</option>
+                      <option value="2030">2030</option>
                     </select>
                   </div>
                 </div>
