@@ -30,11 +30,6 @@
         "Data Warehousing",
         "Tableau"
       ],
-      "selection_rounds": [
-        "Online Technical Assessment",
-        "Coding & SQL Round",
-        "Technical Interview"
-      ],
       "fact_remarks": "Recruited for Data Analyst roles offering 7.5 LPA fixed compensation in Bangalore.",
       "observation_remarks": "Requires strong proficiency in SQL JOINs, aggregation queries, and Python data manipulation."
     },
@@ -65,10 +60,6 @@
         "HTML5/CSS3",
         "Tailwind CSS",
         "REST APIs"
-      ],
-      "selection_rounds": [
-        "Machine Coding Round",
-        "Frontend Technical Interview"
       ],
       "fact_remarks": "2024 Startup with 10-hour work environment hiring Front end Developers at 6.0 LPA.",
       "observation_remarks": "Evaluates component state management, responsive UI design, and JavaScript ES6+ depth."
@@ -102,13 +93,7 @@
         "Java",
         "Python",
         "SQL",
-        "OOP",
-        "System Design"
-      ],
-      "selection_rounds": [
-        "CodeForGood Hackathon",
-        "Online Coding Test",
-        "Technical & Fitment Interviews"
+        "OOP"
       ],
       "fact_remarks": "Hired via full-day Hackathon and CGPA-based shortlisting (Above 8.5 CGPA). Offered 19.75 LPA CTC + 75k/month stipend.",
       "observation_remarks": "CodeForGood Hackathon performance combined with CGPA above 8.5 guarantees high selection odds."
@@ -141,14 +126,7 @@
         "Algorithms",
         "C++",
         "System Architecture",
-        "Cloud Computing",
-        "Python"
-      ],
-      "selection_rounds": [
-        "Online Codility Assessment",
-        "Technical Interview Round 1",
-        "Technical Interview Round 2",
-        "AA Round"
+        "Cloud Computing"
       ],
       "fact_remarks": "Top 100 students sorted by CGPA (Above 9.4 Batch). Offered 50.0 - 52.0 LPA CTC with 125k/month internship stipend.",
       "observation_remarks": "Extremely competitive CGPA cutoffs; technical rounds focus on advanced graph/tree DSA problem solving."
@@ -182,11 +160,6 @@
         "Data Structures",
         "Problem Solving"
       ],
-      "selection_rounds": [
-        "Diversity Hiring OA",
-        "Technical Round",
-        "HR Round"
-      ],
       "fact_remarks": "Exclusively open for female students. Offered 25.0 LPA CTC with 150k/month stipend.",
       "observation_remarks": "Evaluates algorithmic problem solving and logical puzzle solving under pressure."
     },
@@ -217,13 +190,7 @@
         "Algorithms",
         "C++",
         "Python",
-        "System Design",
-        "Operating Systems"
-      ],
-      "selection_rounds": [
-        "Google STEP / Girl Hackathon",
-        "Technical Interview 1",
-        "Technical Interview 2"
+        "System Design"
       ],
       "fact_remarks": "Off-campus & Diversity hiring via Google Girl program offering 43.0 LPA CTC + 89k/month stipend.",
       "observation_remarks": "Focuses on optimal time and space complexity algorithm implementations."
@@ -256,12 +223,6 @@
         "Cloud Architecture",
         "Data Structures",
         "REST APIs"
-      ],
-      "selection_rounds": [
-        "Online Assessment",
-        "Technical Round 1",
-        "Technical Round 2",
-        "HR Round"
       ],
       "fact_remarks": "Hired female candidates for Associate Software Engineer roles at 15.0 LPA CTC + 40k/month stipend.",
       "observation_remarks": "High emphasis on object-oriented programming, data structures, and web technologies."
@@ -297,96 +258,69 @@
         "Cloud Engineering",
         "Linux"
       ],
-      "selection_rounds": [
-        "Virtual Open Book OA",
-        "Technical Interview",
-        "HR Round"
-      ],
       "fact_remarks": "Visited campus 6 times across different profiles offering 11.2 LPA CTC + 30k/month stipend.",
       "observation_remarks": "Selection based on virtual open book technical assessment and cloud/DevOps fundamentals."
     },
     {
-      "id": "deloitte-india",
-      "name": "Deloitte USI / Deloitte India",
-      "domain": "Analytics & Tech Consulting",
+      "id": "orange-business",
+      "name": "Orange Business",
+      "domain": "Telecommunications & Cloud Services",
       "roles": [
-        "Data Analyst",
-        "SAP Analyst",
-        "Analyst - Business Technology"
+        "Software Engineer Intern"
       ],
-      "package_ctc": "8.5 LPA",
-      "numeric_package": 8.5,
-      "cgpa_cutoff": 6.5,
-      "allowed_branches": [
-        "CSE",
-        "IT",
-        "ECE",
-        "AI/DS",
-        "Mechanical"
-      ],
-      "max_backlogs": 0,
-      "primary_location": "Pan-India (Hyderabad, Gurgaon, Bangalore)",
-      "placement_years": [
-        "2023",
-        "2024",
-        "2025",
-        "2026"
-      ],
-      "required_skills": [
-        "SQL",
-        "Python",
-        "Power BI",
-        "Excel",
-        "Data Modeling",
-        "Business Communication"
-      ],
-      "selection_rounds": [
-        "Cognitive & Technical Test",
-        "Case Study Round",
-        "Technical Interview",
-        "HR Round"
-      ],
-      "fact_remarks": "Consistently recruited across 4 placement seasons offering 8.5 LPA (Base 7.5 LPA + 1.0 LPA bonus).",
-      "observation_remarks": "High hiring volume for students demonstrating clean SQL aggregations and business case communication."
-    },
-    {
-      "id": "zs-associates",
-      "name": "ZS Associates",
-      "domain": "Healthcare Analytics & Business Consulting",
-      "roles": [
-        "Business Technology Analyst",
-        "Decision Analytics Associate"
-      ],
-      "package_ctc": "13.5 LPA",
-      "numeric_package": 13.5,
+      "package_ctc": "9.0 LPA",
+      "numeric_package": 9.0,
       "cgpa_cutoff": 7.0,
       "allowed_branches": [
         "CSE",
         "IT",
-        "ECE",
-        "AI/DS"
+        "ECE"
       ],
       "max_backlogs": 0,
-      "primary_location": "Gurgaon, Pune",
+      "primary_location": "Gurugram",
       "placement_years": [
-        "2025",
-        "2026"
+        "2025"
       ],
       "required_skills": [
+        "Networking",
         "Python",
+        "Java",
+        "Cloud Basics",
+        "Linux"
+      ],
+      "fact_remarks": "Came to campus 2 months after releasing forms. Offered 9.0 LPA CTC with easy interview process.",
+      "observation_remarks": "Requires solid grasp of computer networks, basic puzzles, and core OOP concepts."
+    },
+    {
+      "id": "playsimple-games",
+      "name": "PlaySimple Games",
+      "domain": "Mobile Gaming & Analytics",
+      "roles": [
+        "Associate Software Engineer",
+        "Associate Business Analyst"
+      ],
+      "package_ctc": "8.0 LPA",
+      "numeric_package": 8.0,
+      "cgpa_cutoff": 7.0,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Bangalore",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "C++",
+        "Data Structures",
         "SQL",
-        "Guesstimates",
-        "Case Studies",
-        "Data Analytics"
+        "Python",
+        "Problem Solving"
       ],
-      "selection_rounds": [
-        "Online Aptitude & SQL Test",
-        "Video Assessment",
-        "Case Debrief Round",
-        "Fitment Interview"
-      ],
-      "fact_remarks": "Offered 13.5 LPA CTC for Business Technology Consulting drives with 7.0 CGPA eligibility.",
-      "observation_remarks": "Combines technical SQL assessment with market sizing and revenue guesstimate interviews."
+      "fact_remarks": "Shortlisted based on 10th and 12th Board marks (80%+ in both). Offered 8.0 LPA CTC.",
+      "observation_remarks": "Rigorous technical interviews evaluating logic, algorithms, and analytical problem solving."
     },
     {
       "id": "optmyzr",
@@ -396,8 +330,8 @@
         "Software Development Engineer",
         "SDE Testing"
       ],
-      "package_ctc": "15.0 LPA",
-      "numeric_package": 15.0,
+      "package_ctc": "14.0 LPA",
+      "numeric_package": 14.0,
       "cgpa_cutoff": 7.5,
       "allowed_branches": [
         "CSE",
@@ -416,14 +350,99 @@
         "Data Structures",
         "SQL"
       ],
-      "selection_rounds": [
-        "Online Coding Test",
-        "Technical Interview 1",
-        "Technical Interview 2",
-        "HR Round"
-      ],
-      "fact_remarks": "Hired for SDE and SDE Testing roles offering 15.0 LPA CTC + 40k/month stipend.",
+      "fact_remarks": "Hired for SDE and SDE Testing roles offering 14.0 LPA CTC + 40k/month stipend.",
       "observation_remarks": "Evaluates full-stack web concepts and automated test framework architecture."
+    },
+    {
+      "id": "neilsen",
+      "name": "Neilsen",
+      "domain": "Audience Measurement & Data Analytics",
+      "roles": [
+        "Software Engineer Intern"
+      ],
+      "package_ctc": "8.5 LPA",
+      "numeric_package": 8.5,
+      "cgpa_cutoff": 7.0,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE",
+        "AI/DS"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Bangalore",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "SQL",
+        "Python",
+        "Data Analysis",
+        "ETL",
+        "Statistics"
+      ],
+      "fact_remarks": "Visited campus twice. Shortlisting based on 10th and 12th Board marks (85%+ average). Offered 8.5 LPA.",
+      "observation_remarks": "Shortlisting strictly enforces high high school board percentages."
+    },
+    {
+      "id": "invoice-cloud",
+      "name": "Invoice Cloud",
+      "domain": "FinTech & Payment Solutions",
+      "roles": [
+        "Trainee Software Engineer"
+      ],
+      "package_ctc": "7.5 LPA",
+      "numeric_package": 7.5,
+      "cgpa_cutoff": 6.5,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Hyderabad",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "C#",
+        ".NET",
+        "SQL",
+        "JavaScript",
+        "REST APIs"
+      ],
+      "fact_remarks": "Development-focused hiring drive offering 7.5 LPA CTC for Trainee Software Engineers.",
+      "observation_remarks": "Evaluates web framework development and relational database management."
+    },
+    {
+      "id": "otipy",
+      "name": "Otipy (Crofarm)",
+      "domain": "AgriTech & Supply Chain Software",
+      "roles": [
+        "Software Developer Intern"
+      ],
+      "package_ctc": "7.0 LPA",
+      "numeric_package": 7.0,
+      "cgpa_cutoff": 7.0,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Gurugram",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "Node.js",
+        "Python",
+        "React",
+        "MongoDB",
+        "SQL"
+      ],
+      "fact_remarks": "Shortlisting based on 10th and 12th Board marks (90%+ average). Offered 7.0 LPA CTC.",
+      "observation_remarks": "Requires solid full-stack JavaScript skills and modern backend API design."
     },
     {
       "id": "juspay",
@@ -454,13 +473,69 @@
         "C++",
         "Java"
       ],
-      "selection_rounds": [
-        "Learnathon Hackathon",
-        "Technical Interview 1",
-        "Technical Interview 2"
-      ],
       "fact_remarks": "One of the toughest campus recruiters. Offered 27.0 LPA CTC + 40k/month stipend.",
       "observation_remarks": "Selection relies heavily on functional programming paradigms and deep algorithmic puzzle solving."
+    },
+    {
+      "id": "telaverge-communications",
+      "name": "Telaverge Communications",
+      "domain": "Telecom & Cloud Automation",
+      "roles": [
+        "Software Engineer - Research and Development"
+      ],
+      "package_ctc": "12.6 LPA",
+      "numeric_package": 12.6,
+      "cgpa_cutoff": 7.5,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Bangalore",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "C++",
+        "Python",
+        "Networking Protocols",
+        "Linux",
+        "Data Structures"
+      ],
+      "fact_remarks": "Evaluated candidates strictly based on self-built technical projects. Offered 12.6 LPA CTC.",
+      "observation_remarks": "Projects in networking, socket programming, or low-level systems grant a strong advantage."
+    },
+    {
+      "id": "wissen-technology",
+      "name": "Wissen Technology",
+      "domain": "FinTech & High-Frequency Trading Software",
+      "roles": [
+        "Tech Intern",
+        "Java Devloper Intern"
+      ],
+      "package_ctc": "12.6 LPA",
+      "numeric_package": 12.6,
+      "cgpa_cutoff": 7.5,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Bangalore, Hyderabad, Pune, Mumbai",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "Java",
+        "Multithreading",
+        "Data Structures",
+        "Algorithms",
+        "SQL"
+      ],
+      "fact_remarks": "Coding assessment conducted on pen and paper. Offered 12.6 LPA CTC.",
+      "observation_remarks": "Evaluates manual code syntax writing without IDE assistance and deep Java concurrency concepts."
     },
     {
       "id": "samsung-electro-mechanics",
@@ -496,11 +571,6 @@
         "UI/UX Design",
         "Automation"
       ],
-      "selection_rounds": [
-        "Employability Score Test 150+",
-        "Technical Round",
-        "HR Round"
-      ],
       "fact_remarks": "Visited campus 3 times hiring across Machine Learning, Full Stack, UI/UX, and Quality Control roles offering 11.5 LPA CTC.",
       "observation_remarks": "Requires minimum Employability Test score of 150+ for candidate shortlisting."
     },
@@ -510,7 +580,8 @@
       "domain": "Financial Services & SalesForce",
       "roles": [
         "Full Stack and Sales Force Intern",
-        "Java Salesforce Developer"
+        "Java Salesforce Developer",
+        "Full Stack"
       ],
       "package_ctc": "12.0 LPA",
       "numeric_package": 12.0,
@@ -531,11 +602,6 @@
         "LWC",
         "Full Stack Development",
         "SQL"
-      ],
-      "selection_rounds": [
-        "Hackathon Round",
-        "Technical Interview",
-        "HR Interview"
       ],
       "fact_remarks": "Hackathon-based selection offering 12.0 LPA CTC + 35k/month stipend.",
       "observation_remarks": "Evaluates Salesforce platform customization alongside core Java web development."
@@ -571,11 +637,6 @@
         "Node.js",
         "QA Automation"
       ],
-      "selection_rounds": [
-        "Online Assessment",
-        "Technical Interview",
-        "Founders Round"
-      ],
       "fact_remarks": "Recruited 10+ students across Full Stack SDE, Business Analyst, and QA Trainee roles.",
       "observation_remarks": "Focuses on AI application architecture and rapid product prototyping."
     },
@@ -607,188 +668,56 @@
         "Microservices",
         "SQL"
       ],
-      "selection_rounds": [
-        "Online Assessment",
-        "Hackathon",
-        "Technical & HR Interviews"
-      ],
       "fact_remarks": "8-month work-from-home internship with stipend scaling to 36k/month, converting to 14.0 LPA full-time offer.",
       "observation_remarks": "Evaluates enterprise Java microservices and modern frontend frameworks."
     },
     {
-      "id": "capgemini",
-      "name": "Capgemini",
-      "domain": "IT Services & Cloud Engineering",
+      "id": "deloitte-usi",
+      "name": "Deloitte USI",
+      "domain": "Analytics & Consulting",
       "roles": [
-        "Software Engineer (Exceller)",
-        "Senior Software Engineer",
-        "PLM",
-        "4G/5G Wireless"
+        "Data Analyst",
+        "Analyst - Business Technology",
+        "Risk & Financial Advisory"
       ],
-      "package_ctc": "7.5 LPA",
-      "numeric_package": 7.5,
+      "package_ctc": "8.5 LPA",
+      "numeric_package": 8.5,
       "cgpa_cutoff": 6.5,
       "allowed_branches": [
         "CSE",
         "IT",
         "ECE",
-        "EE",
-        "AI/DS"
-      ],
-      "max_backlogs": 0,
-      "primary_location": "PAN India",
-      "placement_years": [
-        "2025",
-        "2026"
-      ],
-      "required_skills": [
-        "Java",
-        "Python",
-        "C++",
-        "Data Structures",
-        "Wireless Tech",
-        "SQL"
-      ],
-      "selection_rounds": [
-        "Capgemini Exceller Test",
-        "Spoken English Assessment",
-        "Technical Interview"
-      ],
-      "fact_remarks": "Mass recruiter offering 7.5 LPA (Exceller profile) and 4.25 LPA (Star profile) across PAN India locations.",
-      "observation_remarks": "Pseudo-code, verbal ability, and fundamental coding scores determine package tiering."
-    },
-    {
-      "id": "infosys",
-      "name": "Infosys",
-      "domain": "Global IT Services & Digital Engineering",
-      "roles": [
-        "Specialist Programmer (SP)",
-        "Digital Specialist Engineer (DSE)",
-        "Systems Engineer (SE)"
-      ],
-      "package_ctc": "9.5 LPA",
-      "numeric_package": 9.5,
-      "cgpa_cutoff": 6.5,
-      "allowed_branches": [
-        "CSE",
-        "IT",
-        "ECE",
-        "All Engineering"
-      ],
-      "max_backlogs": 0,
-      "primary_location": "PAN India",
-      "placement_years": [
-        "2025",
-        "2026"
-      ],
-      "required_skills": [
-        "Data Structures",
-        "Algorithms",
-        "Java",
-        "Python",
-        "SQL",
-        "Web Dev"
-      ],
-      "selection_rounds": [
-        "HackWithInfy / Infytq Coding Test",
-        "Technical Interview",
-        "HR Interview"
-      ],
-      "fact_remarks": "Recruited via HackWithInfy for Specialist Programmer (9.5 LPA) and DSE (6.5 LPA) profiles.",
-      "observation_remarks": "High scores in HackWithInfy coding problems unlock direct interview rounds for SP and DSE roles."
-    },
-    {
-      "id": "accenture",
-      "name": "Accenture",
-      "domain": "Management & Technology Consulting",
-      "roles": [
-        "Advanced Associate Software Engineer",
-        "Associate Software Engineer"
-      ],
-      "package_ctc": "6.5 LPA",
-      "numeric_package": 6.5,
-      "cgpa_cutoff": 6.0,
-      "allowed_branches": [
-        "CSE",
-        "IT",
-        "ECE",
-        "EE",
+        "AI/DS",
         "Mechanical",
         "Civil"
       ],
-      "max_backlogs": 1,
-      "primary_location": "PAN India",
-      "placement_years": [
-        "2024",
-        "2025",
-        "2026"
-      ],
-      "required_skills": [
-        "Java",
-        "SQL",
-        "HTML/CSS/JS",
-        "Agile Fundamentals",
-        "Cloud Basics"
-      ],
-      "selection_rounds": [
-        "Cognitive & Technical Assessment",
-        "Coding Assessment",
-        "Communication Test",
-        "Interview"
-      ],
-      "fact_remarks": "Mass recruitment drive hiring 120+ students across engineering streams with 6.0 CGPA baseline.",
-      "observation_remarks": "Baseline CGPA cutoff allows wide participation; selection correlates with verbal assessment and coding scores."
-    },
-    {
-      "id": "tcs-nqt",
-      "name": "TCS (Tata Consultancy Services)",
-      "domain": "IT Services & Consulting",
-      "roles": [
-        "Prime",
-        "Digital",
-        "Ninja"
-      ],
-      "package_ctc": "9.0 LPA",
-      "numeric_package": 9.0,
-      "cgpa_cutoff": 6.0,
-      "allowed_branches": [
-        "CSE",
-        "IT",
-        "ECE",
-        "All Branches"
-      ],
       "max_backlogs": 0,
-      "primary_location": "PAN India",
+      "primary_location": "Pan-India (Hyderabad, Gurgaon, Bangalore, Mumbai)",
       "placement_years": [
         "2024",
         "2025",
         "2026"
       ],
       "required_skills": [
-        "C/C++",
-        "Java",
+        "SQL",
         "Python",
-        "Data Structures",
-        "SQL"
+        "Power BI",
+        "Excel",
+        "Data Visualization",
+        "Problem Solving"
       ],
-      "selection_rounds": [
-        "TCS NQT National Test",
-        "Technical Interview",
-        "Managerial & HR Interview"
-      ],
-      "fact_remarks": "Offers 3 tiers via NQT: Prime (9.0 LPA), Digital (7.0 LPA), and Ninja (3.36 LPA).",
-      "observation_remarks": "Top 5% NQT scorers receive direct interview invites for TCS Prime and Digital roles."
+      "fact_remarks": "Deloitte USI visited campus for 3 consecutive placement cycles offering a fixed CTC of 7.5 LPA plus 1.0 LPA performance bonus.",
+      "observation_remarks": "Historical placement records indicate high conversion for candidates demonstrating proficiency in SQL JOINs and Power BI."
     },
     {
-      "id": "celebal-technologies",
-      "name": "CELEBAL Technologies",
-      "domain": "Data Science, AI & Cloud",
+      "id": "coders-brain",
+      "name": "Coders Brain",
+      "domain": "Cloud Data Engineering & AI",
       "roles": [
-        "Data Science / Data Engineering",
-        "Enterprise Sales Executive"
+        "Data Engineer (Python / Databricks / PySpark / Azure)"
       ],
-      "package_ctc": "8.0 LPA",
-      "numeric_package": 8.0,
+      "package_ctc": "10.0 LPA",
+      "numeric_package": 10.0,
       "cgpa_cutoff": 7.0,
       "allowed_branches": [
         "CSE",
@@ -797,63 +726,335 @@
         "AI/DS"
       ],
       "max_backlogs": 0,
-      "primary_location": "Pune, Jaipur, Noida, PAN India",
+      "primary_location": "Noida",
       "placement_years": [
-        "2025",
-        "2026"
+        "2025"
       ],
       "required_skills": [
         "Python",
+        "Databricks",
         "PySpark",
-        "Azure Data Factory",
-        "SQL",
-        "Machine Learning"
+        "Azure Data Lake",
+        "SQL"
       ],
-      "selection_rounds": [
-        "Online Assessment",
-        "Data Science Case Study",
-        "Technical Interview"
-      ],
-      "fact_remarks": "Recruited across Data Science, Azure Data Engineering, and Generative AI profiles.",
-      "observation_remarks": "Requires solid hands-on experience with PySpark, SQL query tuning, and cloud data lakes."
+      "fact_remarks": "Recruited for specialized Cloud Data Engineering roles utilizing Databricks and PySpark at 10.0 LPA.",
+      "observation_remarks": "Requires strong hands-on experience with distributed PySpark dataframes and Azure cloud ETL pipelines."
     },
     {
-      "id": "maq-software",
-      "name": "MAQ Software",
-      "domain": "Cloud Analytics & Power BI",
+      "id": "flipkart",
+      "name": "Flipkart",
+      "domain": "E-Commerce & Cybersecurity",
       "roles": [
-        "Software Engineer 1",
-        "Associate Software Engineer"
+        "Infosec Intern",
+        "Software Engineer"
       ],
-      "package_ctc": "9.0 LPA",
-      "numeric_package": 9.0,
-      "cgpa_cutoff": 7.0,
+      "package_ctc": "18.0 LPA",
+      "numeric_package": 18.0,
+      "cgpa_cutoff": 8.0,
       "allowed_branches": [
         "CSE",
         "IT",
         "ECE"
       ],
       "max_backlogs": 0,
-      "primary_location": "Noida, Hyderabad",
+      "primary_location": "Bangalore (Hybrid model)",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "Cybersecurity",
+        "Network Security",
+        "Python",
+        "C++",
+        "Data Structures"
+      ],
+      "fact_remarks": "Recruited Infosec Interns offering 18.0 LPA CTC under hybrid working model.",
+      "observation_remarks": "Focuses on security vulnerability assessment, cryptography fundamentals, and secure coding practices."
+    },
+    {
+      "id": "purestorage",
+      "name": "PureStorage",
+      "domain": "Enterprise Data Storage & Automation",
+      "roles": [
+        "Deal Analysis Automation Intern - Excel & SFDC Integration"
+      ],
+      "package_ctc": "14.0 LPA",
+      "numeric_package": 14.0,
+      "cgpa_cutoff": 7.5,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Hyderabad, Bangalore",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "Python",
+        "Salesforce API",
+        "Excel VBA",
+        "SQL",
+        "Automation"
+      ],
+      "fact_remarks": "Hired for Deal Analysis Automation Intern integrating Salesforce (SFDC) and complex Excel models at 14.0 LPA.",
+      "observation_remarks": "Requires strong analytical modeling capabilities and REST API integration skills."
+    },
+    {
+      "id": "morgan-stanley",
+      "name": "Morgan Stanley",
+      "domain": "Investment Banking & Tech",
+      "roles": [
+        "Cyber Track Apprenticeship Program",
+        "Software Engineer"
+      ],
+      "package_ctc": "16.0 LPA",
+      "numeric_package": 16.0,
+      "cgpa_cutoff": 8.0,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Bangalore, Mumbai",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "Cybersecurity",
+        "C++",
+        "Java",
+        "Linux Internals",
+        "Data Structures"
+      ],
+      "fact_remarks": "Recruited for Cyber Track Apprenticeship Program in Bangalore and Mumbai offering 16.0 LPA.",
+      "observation_remarks": "Requires deep understanding of operating systems, network security protocols, and C++/Java DSA."
+    },
+    {
+      "id": "blinkit",
+      "name": "Blinkit (Zomato)",
+      "domain": "Quick Commerce & Tech",
+      "roles": [
+        "Business Analyst Intern",
+        "Software Engineer"
+      ],
+      "package_ctc": "12.0 LPA",
+      "numeric_package": 12.0,
+      "cgpa_cutoff": 7.5,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE",
+        "AI/DS"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Gurugram, Punjab",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "SQL",
+        "Python",
+        "Data Analytics",
+        "Excel",
+        "Problem Solving"
+      ],
+      "fact_remarks": "Offered 12.0 LPA CTC for Business Analyst Interns in Gurugram.",
+      "observation_remarks": "Evaluates real-time delivery optimization metrics, SQL data extraction, and business logic."
+    },
+    {
+      "id": "myntra",
+      "name": "Myntra",
+      "domain": "E-Commerce & Fashion Tech",
+      "roles": [
+        "Software Developer Interns",
+        "SDE-1"
+      ],
+      "package_ctc": "18.0 LPA",
+      "numeric_package": 18.0,
+      "cgpa_cutoff": 8.0,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Bangalore",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "Data Structures",
+        "Algorithms",
+        "Java",
+        "React",
+        "System Design"
+      ],
+      "fact_remarks": "Pool hiring drive with strict college filtering. Offered 18.0 LPA CTC.",
+      "observation_remarks": "High bar for data structures, algorithmic efficiency, and scalable web architecture."
+    },
+    {
+      "id": "rippling",
+      "name": "Rippling",
+      "domain": "Workforce & HR Tech SaaS",
+      "roles": [
+        "Frontend Role",
+        "Software Engineer"
+      ],
+      "package_ctc": "30.0 LPA",
+      "numeric_package": 30.0,
+      "cgpa_cutoff": 8.5,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Bangalore",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "React",
+        "TypeScript",
+        "JavaScript ES6+",
+        "Data Structures",
+        "Web Performance"
+      ],
+      "fact_remarks": "Internship-to-FTE drive offering 30.0 LPA CTC. Online assessments feature lengthy React component design tasks.",
+      "observation_remarks": "Evaluates production-grade React UI construction, state management, and frontend performance."
+    },
+    {
+      "id": "codenation",
+      "name": "CodeNation",
+      "domain": "High-Frequency Tech & Algorithmic Software",
+      "roles": [
+        "Software Development Engineer"
+      ],
+      "package_ctc": "35.0 LPA",
+      "numeric_package": 35.0,
+      "cgpa_cutoff": 8.5,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Remote / Bangalore",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "Competitive Programming",
+        "C++",
+        "Data Structures",
+        "Advanced Algorithms",
+        "System Design"
+      ],
+      "fact_remarks": "Premier algorithmic tech recruiter offering 35.0 LPA CTC for Software Development Engineers.",
+      "observation_remarks": "Requires elite competitive programming ability (Codeforces Candidate Master / Master equivalent)."
+    },
+    {
+      "id": "autodesk",
+      "name": "Autodesk",
+      "domain": "3D Design & Engineering Software",
+      "roles": [
+        "Software Development Engineer (SDE)"
+      ],
+      "package_ctc": "22.0 LPA",
+      "numeric_package": 22.0,
+      "cgpa_cutoff": 8.0,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Bangalore, Pune",
+      "placement_years": [
+        "2025"
+      ],
+      "required_skills": [
+        "C++",
+        "Data Structures",
+        "Dynamic Programming",
+        "Algorithms",
+        "Graphics Math"
+      ],
+      "fact_remarks": "Offered 22.0 LPA CTC for SDE roles in Bangalore and Pune.",
+      "observation_remarks": "Interviews test core Data Structures & Algorithms with emphasis on memoization and dynamic programming."
+    },
+    {
+      "id": "eightfold-ai",
+      "name": "Eightfold AI",
+      "domain": "AI Talent Intelligence Platform",
+      "roles": [
+        "Agentic AI - Engineering Intern",
+        "Software Engineer"
+      ],
+      "package_ctc": "16.0 LPA",
+      "numeric_package": 16.0,
+      "cgpa_cutoff": 8.0,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE",
+        "AI/DS"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Bangalore, Noida",
       "placement_years": [
         "2025",
         "2026"
       ],
       "required_skills": [
-        "Data Structures",
-        "C#",
+        "Agentic AI",
+        "Python",
+        "LLMs",
+        "FastAPI",
+        "Machine Learning",
+        "Data Structures"
+      ],
+      "fact_remarks": "Hired for Agentic AI and Engineering Intern roles in Bangalore and Noida offering 16.0 LPA.",
+      "observation_remarks": "Prioritizes practical experience building agentic workflows, LLM tool-calling, and Python APIs."
+    },
+    {
+      "id": "goldman-sachs",
+      "name": "Goldman Sachs",
+      "domain": "Investment Banking & Quantitative Engineering",
+      "roles": [
+        "Quantitative Analyst",
+        "Data Engineer",
+        "Software Engineer"
+      ],
+      "package_ctc": "20.0 LPA",
+      "numeric_package": 20.0,
+      "cgpa_cutoff": 8.0,
+      "allowed_branches": [
+        "CSE",
+        "IT",
+        "ECE",
+        "Mathematics & Computing"
+      ],
+      "max_backlogs": 0,
+      "primary_location": "Bangalore",
+      "placement_years": [
+        "2025",
+        "2026"
+      ],
+      "required_skills": [
+        "Python",
+        "C++",
         "SQL",
-        "Power BI",
-        "DAX",
-        "Azure"
+        "Spark",
+        "Probability",
+        "Linear Algebra",
+        "Algorithms"
       ],
-      "selection_rounds": [
-        "Online Coding Test (DSA + SQL)",
-        "Technical Round 1",
-        "Technical Round 2"
-      ],
-      "fact_remarks": "Offered 9.0 LPA CTC for Software Engineer 1 roles with strict DSA & SQL screening.",
-      "observation_remarks": "Expects strong proficiency in SQL analytical queries, Power BI DAX functions, and C# DSA."
+      "fact_remarks": "Goldman Sachs offered 20.0 LPA for Quantitative Engineering and Data Infrastructure roles.",
+      "observation_remarks": "Requires rigorous mathematical problem solving, probability calculations, and low-latency algorithm optimization."
     }
   ]
 }
