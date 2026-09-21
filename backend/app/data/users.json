@@ -335,8 +335,8 @@
     "id": "user-e169889f",
     "email": "parv2959.beai24@chitkara.edu.in",
     "password_hash": "c775e7b757ede630cd0aa1113bd102661ab38829ca52a6422ab782862f268646",
-    "name": "Parv Sood",
-    "rollNumber": "1234567890",
+    "name": "PARV SOOD",
+    "rollNumber": "2410992959",
     "branch": "Computer Science & Engineering",
     "specialization": "AI & Machine Learning",
     "cgpa": 8.66,
@@ -467,6 +467,32 @@
   "teststudent_1790026009@campus.edu": {
     "id": "user-e8c4bc9c",
     "email": "teststudent_1790026009@campus.edu",
+    "password_hash": "dda69783f28fdf6f1c5a83e8400f2472e9300887d1dffffe12a07b92a3d0aa25",
+    "name": "Test Student",
+    "rollNumber": "2210999999",
+    "branch": "Computer Science & Engineering",
+    "specialization": "Core Stream / General",
+    "cgpa": 8.9,
+    "graduationYear": 2026,
+    "skills": [
+      "Python",
+      "SQL",
+      "React",
+      "FastAPI",
+      "Machine Learning"
+    ],
+    "preferredRoles": [
+      "Data Analyst",
+      "SDE"
+    ],
+    "preferredLocations": [
+      "Bangalore",
+      "Gurugram"
+    ]
+  },
+  "teststudent_1790027246@campus.edu": {
+    "id": "user-70117fee",
+    "email": "teststudent_1790027246@campus.edu",
     "password_hash": "dda69783f28fdf6f1c5a83e8400f2472e9300887d1dffffe12a07b92a3d0aa25",
     "name": "Test Student",
     "rollNumber": "2210999999",

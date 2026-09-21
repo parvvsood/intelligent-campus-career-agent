@@ -60,6 +60,20 @@ export const authService = {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   },
 
+  async updateProfile(profileData) {
+    try {
+      const response = await api.put('/auth/profile', profileData);
+      if (response.data) {
+        this.setUser(response.data);
+        return response.data;
+      }
+    } catch (err) {
+      console.warn('Backend updateProfile sync warning:', err);
+    }
+    this.setUser(profileData);
+    return profileData;
+  },
+
   logout() {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);

@@ -4,6 +4,7 @@ from typing import Optional
 from app.models.user_models import (
     UserRegisterRequest,
     UserLoginRequest,
+    UserProfileUpdateRequest,
     UserProfileResponse,
     AuthResponse
 )
@@ -66,3 +67,13 @@ async def get_current_user(email: Optional[str] = None):
     if not user:
         raise HTTPException(status_code=404, detail="User profile not found.")
     return _to_profile_response(user)
+
+@router.put("/auth/profile", response_model=UserProfileResponse, tags=["Authentication"])
+async def update_user_profile(request: UserProfileUpdateRequest):
+    try:
+        updated = auth_service.update_user_profile(request.email, request.model_dump(exclude_unset=True))
+        return _to_profile_response(updated)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Profile update failed: {str(e)}")

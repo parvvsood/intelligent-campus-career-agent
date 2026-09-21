@@ -103,8 +103,8 @@ class AuthService:
             raise ValueError("User not found.")
 
         user = self.users[email_clean]
-        for key in ["name", "rollNumber", "branch", "cgpa", "graduationYear", "skills", "preferredRoles", "preferredLocations"]:
-            if key in profile_data:
+        for key in ["name", "rollNumber", "branch", "specialization", "cgpa", "graduationYear", "skills", "preferredRoles", "preferredLocations"]:
+            if key in profile_data and profile_data[key] is not None:
                 user[key] = profile_data[key]
 
         self.users[email_clean] = user

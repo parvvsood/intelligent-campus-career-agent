@@ -33,6 +33,19 @@ export default function App() {
     setActiveTab('dashboard');
   };
 
+  const handleUpdateStudentProfile = async (updatedProfile) => {
+    setStudentProfile(updatedProfile);
+    authService.setUser(updatedProfile);
+    try {
+      const refreshed = await authService.updateProfile(updatedProfile);
+      if (refreshed) {
+        setStudentProfile(refreshed);
+      }
+    } catch (err) {
+      console.warn('Profile sync warning:', err);
+    }
+  };
+
   const handleLogout = () => {
     authService.logout();
     setStudentProfile(null);
@@ -90,7 +103,7 @@ export default function App() {
         {activeTab === 'profile' && (
           <Profile 
             studentProfile={studentProfile} 
-            setStudentProfile={setStudentProfile}
+            setStudentProfile={handleUpdateStudentProfile}
             setActiveTab={setActiveTab}
             onOpenAuth={handleOpenAuth}
             onLogout={handleLogout}

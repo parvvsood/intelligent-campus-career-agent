@@ -18,6 +18,18 @@ class UserLoginRequest(BaseModel):
     email: str
     password: str
 
+class UserProfileUpdateRequest(BaseModel):
+    email: str
+    name: Optional[str] = None
+    rollNumber: Optional[str] = None
+    branch: Optional[str] = None
+    specialization: Optional[str] = None
+    cgpa: Optional[float] = None
+    graduationYear: Optional[int] = None
+    skills: Optional[List[str]] = None
+    preferredRoles: Optional[List[str]] = None
+    preferredLocations: Optional[List[str]] = None
+
 class UserProfileResponse(BaseModel):
     id: str
     email: str
