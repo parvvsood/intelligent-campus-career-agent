@@ -5,6 +5,7 @@ import { Home } from './pages/Home';
 import { Dashboard } from './pages/Dashboard';
 import { Chat } from './pages/Chat';
 import { Companies } from './pages/Companies';
+import { Profile } from './pages/Profile';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -50,11 +51,12 @@ export default function App() {
             onAskAboutCompany={handleAskAboutCompany}
           />
         )}
-        {activeTab !== 'home' && activeTab !== 'dashboard' && activeTab !== 'chat' && activeTab !== 'companies' && (
-          <div className="py-16 text-center space-y-4">
-            <h2 className="text-xl font-bold text-white capitalize">{activeTab} Page</h2>
-            <p className="text-slate-400">Page component building in progress for issue pipeline.</p>
-          </div>
+        {activeTab === 'profile' && (
+          <Profile 
+            studentProfile={studentProfile} 
+            setStudentProfile={setStudentProfile}
+            setActiveTab={setActiveTab} 
+          />
         )}
       </main>
 
