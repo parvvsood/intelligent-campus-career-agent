@@ -24,7 +24,7 @@ class PlacementDataEngine:
             print(f"[PlacementDataEngine] Warning loading data: {e}")
             self.companies = []
 
-    def get_all_companies() -> List[Dict[str, Any]]:
+    def get_all_companies(self) -> List[Dict[str, Any]]:
         return self.companies
 
     def find_companies_by_role(self, role_keyword: str) -> List[Dict[str, Any]]:
@@ -37,7 +37,7 @@ class PlacementDataEngine:
             if (any(keyword in r for r in roles) or 
                 keyword in domain or 
                 any(keyword in s for s in skills) or
-                (keyword == "data analyst" and any("analyst" in r for r in roles))):
+                ("analyst" in keyword and any("analyst" in r for r in roles))):
                 matched.append(comp)
         return matched
 
