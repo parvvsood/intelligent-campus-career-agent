@@ -106,9 +106,9 @@
     "email": "parvsood2408@gmail.com",
     "password_hash": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
     "name": "Parv Sood",
-    "rollNumber": "23423432",
+    "rollNumber": "2410992959",
     "branch": "Computer Science & Engineering",
-    "cgpa": 8.66,
+    "cgpa": 9.45,
     "graduationYear": 2028,
     "skills": [
       "Python",
@@ -117,11 +117,17 @@
       "Deep Learning",
       "Natural Language Processing (NLP)",
       "PySpark",
-      "RAG Architecture"
+      "RAG Architecture",
+      "Azure",
+      "Google Cloud (GCP)",
+      "Go",
+      "C",
+      "Rust"
     ],
     "preferredRoles": [
       "AI / ML Engineer",
-      "Software Development Engineer (SDE)"
+      "Software Development Engineer (SDE)",
+      "Full Stack Developer"
     ],
     "preferredLocations": [
       "Bangalore",
@@ -516,6 +522,41 @@
     "preferredLocations": [
       "Bangalore",
       "Gurugram"
+    ]
+  },
+  "shehjeet2974.beai24@chitkara.edu.in": {
+    "id": "user-f6b6a7e7",
+    "email": "shehjeet2974.beai24@chitkara.edu.in",
+    "password_hash": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "name": "Shehjeet Singh",
+    "rollNumber": "2410992974",
+    "branch": "Computer Science & Engineering",
+    "specialization": "AI & Machine Learning",
+    "cgpa": 9.0,
+    "graduationYear": 2028,
+    "skills": [
+      "Python",
+      "SQL",
+      "Data Analysis",
+      "Deep Learning",
+      "Natural Language Processing (NLP)",
+      "PySpark",
+      "Generative AI / LLMs",
+      "MongoDB",
+      "Snowflake"
+    ],
+    "preferredRoles": [
+      "AI / ML Engineer",
+      "Software Development Engineer (SDE)",
+      "Backend Engineer",
+      "Data Analyst & Analytics"
+    ],
+    "preferredLocations": [
+      "Remote",
+      "Hyderabad",
+      "Noida",
+      "Pune",
+      "Mumbai"
     ]
   }
 }

@@ -1,6 +1,7 @@
 import os
 import time
 import logging
+import asyncio
 from typing import Dict, Any, Optional
 from azure.core.credentials import AccessToken
 from app.config import settings
@@ -57,7 +58,10 @@ class FoundryService:
         if not self.use_fallback:
             try:
                 logger.info(f"Invoking Azure AI Foundry Agent [{self.agent_name}:{self.agent_version}] at {self.endpoint}")
-                return await self._invoke_azure_foundry(message, conversation_id, student_profile)
+                return await asyncio.wait_for(
+                    self._invoke_azure_foundry(message, conversation_id, student_profile),
+                    timeout=150.0
+                )
             except Exception as e:
                 logger.warning(f"Microsoft Foundry API exception ({e}). Failing over to Grounded Placement Engine.")
                 res = career_engine.process_query(message, student_profile)
@@ -92,16 +96,19 @@ class FoundryService:
         if context_parts:
             prompt = f"{message}\n[Student Profile Context: {', '.join(context_parts)}]"
 
-        response = openai_client.responses.create(
-            input=[{"role": "user", "content": prompt}],
-            extra_body={
-                "agent_reference": {
-                    "name": self.agent_name,
-                    "version": self.agent_version,
-                    "type": "agent_reference"
+        def _call_azure():
+            return openai_client.responses.create(
+                input=[{"role": "user", "content": prompt}],
+                extra_body={
+                    "agent_reference": {
+                        "name": self.agent_name,
+                        "version": self.agent_version,
+                        "type": "agent_reference"
+                    }
                 }
-            }
-        )
+            )
+
+        response = await asyncio.to_thread(_call_azure)
 
         answer_text = None
         if hasattr(response, "output_text") and response.output_text:
