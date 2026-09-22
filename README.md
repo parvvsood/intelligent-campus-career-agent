@@ -129,8 +129,8 @@ Students get instant, data-backed insights regarding:
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/parvvsood/intelligent-campus-career-agent.git
-cd intelligent-campus-career-agent
+git clone https://github.com/parvvsood/skillRouter-CampusPlacement-Agent.git
+cd skillRouter-CampusPlacement-Agent
 ```
 
 ### 2. Backend Setup (FastAPI)
