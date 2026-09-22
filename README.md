@@ -1,177 +1,233 @@
-# Intelligent Campus Career Agent 🎓⚡
+<div align="center">
 
-> A premium, AI-powered campus career guidance platform designed to help university students explore campus placement statistics, analyze role-based skill gaps, generate step-by-step preparation plans, and interact with data-grounded company insights powered by Microsoft Foundry & FastAPI.
+# 🚀 SkillRouter — Intelligent Campus Career Agent 🎓⚡
+
+> **A premium, AI-powered university career guidance & placement analytics platform.**  
+> Powered by **Microsoft Azure AI Foundry (`gpt-5.1`)**, **FastAPI**, and **React + Vite**.
+
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/Frontend-React_18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Azure AI Foundry](https://img.shields.io/badge/AI_Engine-Azure_AI_Foundry-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+---
+
+</div>
+
+## 📌 Table of Contents
+- [🌟 Overview](#-overview)
+- [✨ Key Features](#-key-features)
+- [🏗️ System Architecture](#️-system-architecture)
+- [🛠️ Technology Stack](#️-technology-stack)
+- [🚀 Quick Start & Installation](#-quick-start--installation)
+  - [Prerequisites](#prerequisites)
+  - [1. Clone Repository](#1-clone-repository)
+  - [2. Backend Setup (FastAPI)](#2-backend-setup-fastapi)
+  - [3. Frontend Setup (React + Vite)](#3-frontend-setup-react--vite)
+- [🔐 Environment Configuration](#-environment-configuration)
+- [📡 API Documentation Matrix](#-api-documentation-matrix)
+- [🧪 Testing & Quality Verification](#-testing--quality-verification)
+- [📄 License & Roadmap](#-license--roadmap)
 
 ---
 
 ## 🌟 Overview
 
-The **Intelligent Campus Career Agent** bridges the gap between campus placement data and student preparation. Rather than manually parsing spreadsheets or relying on unverified advice, students can converse with an intelligent career assistant to get instant, data-backed answers about campus recruiters, CGPA cutoffs, package ranges, skill requirements, customized study plans, and historical hiring trends.
+**SkillRouter** bridges the gap between raw university campus placement data and student preparation. Instead of manually combing through unorganized Excel spreadsheets, students can interact with a live **Microsoft Azure AI Foundry Agent** (`CAMPUS-PLACEMENT-ASSISTENT:2`) grounded in verified campus recruitment statistics.
+
+Students get instant, data-backed insights regarding:
+- 📊 **Company Recruitment Records**: CGPA cutoffs, package ranges (LPA), visiting years, and eligibility criteria.
+- 🎯 **Skill Gap Analysis**: Matching student profiles against historical hiring patterns.
+- 📅 **Custom Study Roadmaps**: Step-by-step 30-day or 60-day preparation sequences for targeted technical roles.
+- 👤 **Academic Profile Sync**: Registration-style profile management with real-time navbar badge updates and backend persistence.
 
 ---
 
-## 🏗️ Architecture
+## ✨ Key Features
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                          REACT + VITE FRONTEND                         │
-│   (Tailwind CSS, Framer Motion, Lucide Icons, Modern Conversational UI) │
-│                                                                        │
-│   ┌──────────────┐ ┌────────────────┐ ┌──────────┐ ┌──────────────┐   │
-│   │ Landing Page │ │ Career Dash    │ │ AI Chat  │ │ Co. Explorer │   │
-│   └──────────────┘ └────────────────┘ └──────────┘ └──────────────┘   │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │ HTTP / JSON API
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│                             FASTAPI BACKEND                            │
-│                                                                        │
-│  ┌─────────────────────────┐     ┌──────────────────────────────────┐  │
-│  │ API Layer               │     │ Business & Data Services         │  │
-│  │ POST /api/chat          │ ──► │ - Career Engine Service          │  │
-│  │ GET  /api/companies     │     │ - Placement Knowledge Base       │  │
-│  │ GET  /api/student/profile│    │   (Excel / Grounded Datasets)   │  │
-│  │ POST /api/student/profile│    │ - Skill Analysis & Study Plan    │  │
-│  └─────────────────────────┘     └──────────────────────────────────┘  │
-│                                                   │                    │
-│                                                   ▼                    │
-│                                  ┌──────────────────────────────────┐  │
-│                                  │ Foundry Integration Service      │  │
-│                                  │ (foundry_service.py)             │  │
-│                                  └────────────────┬─────────────────┘  │
-└───────────────────────────────────────────────────┼────────────────────┘
-                                                    │ Azure SDK / REST
-                                                    ▼
-                                   ┌──────────────────────────────────┐
-                                   │      MICROSOFT FOUNDRY AGENT     │
-                                   │  (Connected Placement Knowledge) │
-                                   └──────────────────────────────────┘
-```
+### 💬 1. Intelligent AI Career Chat (`SkillRouter Engine`)
+- **Direct Azure AI Foundry Integration**: Connected to live `CAMPUS-PLACEMENT-ASSISTENT:2` using Azure AI Projects SDK.
+- **Context-Aware Responses**: Automatically injects student degree, specialization, CGPA, and target roles into prompt execution.
+- **Persistent Chat History**: Stores isolated chat sessions per student account in `localStorage`, maintaining conversations seamlessly across page reloads (<kbd>F5</kbd>).
+- **Token Protection Guard**: Requires authenticated student login to protect Azure AI Foundry API tokens.
+
+### 🏢 2. Interactive Company Explorer
+- Multi-parameter filtering by **Domain** (AI/ML, SDE, Data Science, DevOps), **CGPA Threshold**, **Salary Package Range (LPA)**, and **Recruitment Year**.
+- Detailed company detail drawers displaying eligibility remarks, required technical stacks, and visiting history.
+
+### 👤 3. Academic & Career Profile Manager
+- **Registration-Style Dropdowns**: Select Branch, Graduation Year (*2024–2028*), and Specialization Track (*AI & Machine Learning*, *AI & Future Technologies*, *Core Stream / General*).
+- **50+ Categorized Technical Skill Selector**: Interactive search filter, category groupings (*Programming Languages*, *Web & Cloud*, *AI/ML & Data*, *Core CS*), custom skill entries, and skill summary counters.
+- **Interactive Role & Location Chips**: Click-to-toggle target roles and preferred work locations.
+- **Real-Time Header Badge Sync**: Profile updates instantly reflect in the navbar user badge and persist in backend storage (`PUT /api/auth/profile`).
+
+### 🔐 4. Student Authentication & Modals
+- Clean Login and Sign-Up modals with instant email/password validation.
+- Responsive **Logout Re-verification Modal** with backdrop blur (`backdrop-blur-md`) and bold red action button.
 
 ---
 
-## 🚀 Key Features
+## 🏗️ System Architecture
 
-1. **AI Career Chat Interface**:
-   - Claude-inspired clean conversational UI with dark/light aesthetics.
-   - Real-time response rendering with Markdown tables, skill badges, and step-by-step study plans.
-   - Contextual conversation management with session isolation and prompt suggestions.
-
-2. **Company Explorer**:
-   - Interactive filtering by domain (Data Analyst, AI/ML, SDE, DevOps), CGPA threshold, salary package range, location, and recruitment year.
-   - Data-grounded company remarks with strict distinction between verified facts and analytical observations.
-
-3. **Student Profile Customization**:
-   - Branch, CGPA, graduation year, existing skills, target roles, and preferred locations.
-   - Dynamic context injection into career chat sessions for personalized advice.
-
-4. **Skill Analysis & Study Planner**:
-   - Automated skill gap analysis comparing student profile against company placement criteria.
-   - Milestone-based preparation sequences with recommended topics and practice areas.
-
-5. **Microsoft Foundry & Azure Service Integration**:
-   - Direct service adapter (`foundry_service.py`) routing queries to Microsoft Foundry Agents.
-   - Dual-mode architecture: Live Azure API mode + Embedded Grounded Knowledge Engine for offline/test environments.
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          REACT + VITE FRONTEND (SkillRouter)                │
+│       (Tailwind CSS, Framer Motion, Lucide Icons, Modern Dark Theme)        │
+│                                                                             │
+│   ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │
+│   │ Landing Page │  │  Career Chat │  │ Co. Explorer │  │ Profile Mgmt │    │
+│   └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘    │
+└──────────────────────────────────────┬──────────────────────────────────────┘
+                                       │ HTTP / JSON REST API
+                                       ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                             FASTAPI BACKEND SERVER                          │
+│                                                                             │
+│  ┌─────────────────────────┐      ┌──────────────────────────────────────┐  │
+│  │ API Endpoints           │      │ Business & Data Services             │  │
+│  │  - POST /api/chat       │ ───► │  - Foundry Service Adapter           │  │
+│  │  - GET  /api/companies  │      │  - Career Engine (Local Fallback)    │  │
+│  │  - POST /api/auth/login │      │  - Placement Knowledge Base (Excel)  │  │
+│  │  - PUT  /api/auth/prof  │      │  - User Authentication & Storage     │  │
+│  └─────────────────────────┘      └──────────────────────────────────────┘  │
+│                                                       │                     │
+│                                                       ▼ (asyncio.to_thread) │
+│                                   ┌──────────────────────────────────────┐  │
+│                                   │ Azure AI Projects SDK Adapter        │  │
+│                                   └───────────────────┬──────────────────┘  │
+└───────────────────────────────────────────────────────┼─────────────────────┘
+                                                        │ Azure HTTPS API
+                                                        ▼
+                                    ┌──────────────────────────────────────┐
+                                    │    MICROSOFT AZURE AI FOUNDRY AGENT  │
+                                    │     (CAMPUS-PLACEMENT-ASSISTENT:2)   │
+                                    └──────────────────────────────────────┘
+```
 
 ---
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: React 18, Vite, Tailwind CSS, Framer Motion, Lucide React Icons, Axios.
-- **Backend**: Python 3.12, FastAPI, Uvicorn, Pydantic, Pandas.
-- **AI Integration**: Microsoft Azure AI Agent Service / Microsoft Foundry SDK.
-- **Testing & Quality**: Pytest, ESLint, Vite Build, GitHub Actions / Issues.
+| Layer | Technologies & Tools |
+|---|---|
+| **Frontend UI** | React 18, Vite 6, Tailwind CSS, Framer Motion, Lucide React, Axios |
+| **Backend Server** | Python 3.12, FastAPI, Uvicorn, Pydantic v2, Pandas |
+| **AI Agent Service** | Microsoft Azure AI Agent Service (`gpt-5.1`), Azure AI Projects SDK |
+| **Authentication** | JWT Token Sessions, Local Storage Sync, Password Hashing |
+| **Testing & Quality** | Pytest 8, Vite Production Compiler, ESLint |
 
 ---
 
-## 📁 Repository Structure
-
-```
-intelligent-campus-career-agent/
-├── .env.example              # Root environment template
-├── .gitignore                 # Secrets and build ignore rules
-├── README.md                  # Project documentation
-├── docs/                      # Architecture diagrams and issue logs
-│   ├── ARCHITECTURE.md
-│   └── ISSUE_TRACKER.md
-├── tests/                     # Integration tests
-│   └── README.md
-├── frontend/                  # React + Vite application
-│   ├── src/
-│   │   ├── components/       # Landing, Dashboard, Chat, Company, Profile
-│   │   ├── pages/            # Home, Dashboard, Chat, Companies, Profile
-│   │   ├── services/         # API integrations
-│   │   └── context/          # State management
-│   ├── package.json
-│   ├── vite.config.js
-│   └── tailwind.config.js
-└── backend/                   # FastAPI application
-    ├── app/
-    │   ├── api/              # API router endpoints
-    │   ├── services/         # Foundry service & Placement data engine
-    │   ├── models/           # Pydantic data schemas
-    │   ├── data/             # Grounded campus placement datasets
-    │   └── main.py           # FastAPI entrypoint
-    ├── requirements.txt
-    └── tests/                 # Backend pytest test suite
-```
-
----
-
-## 💻 Setup Instructions
+## 🚀 Quick Start & Installation
 
 ### Prerequisites
-- Node.js v18+ and npm v9+
-- Python 3.10+
-- Git
+- **Node.js**: v18.0.0 or higher
+- **Python**: v3.10 or higher
+- **Git**
 
-### Backend Setup
+### 1. Clone Repository
+```bash
+git clone https://github.com/parvvsood/intelligent-campus-career-agent.git
+cd intelligent-campus-career-agent
+```
+
+### 2. Backend Setup (FastAPI)
 ```bash
 cd backend
+
+# Create virtual environment
 python -m venv venv
-# On Windows:
+
+# Activate virtual environment
+# Windows:
 venv\Scripts\activate
-# On macOS/Linux:
+# macOS/Linux:
 # source venv/bin/activate
 
+# Install dependencies
 pip install -r requirements.txt
-cp .env.example .env
-uvicorn app.main:app --reload --port 8000
-```
-Backend API server running at `http://localhost:8000` (Docs: `http://localhost:8000/docs`).
 
-### Frontend Setup
+# Configure environment variables
+cp .env.example .env
+
+# Start FastAPI Uvicorn Server
+py -3 -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+> 📍 **Backend API running at**: `http://127.0.0.1:8000`  
+> 📑 **Swagger API Docs**: `http://127.0.0.1:8000/docs`
+
+### 3. Frontend Setup (React + Vite)
+Open a new terminal window:
 ```bash
 cd frontend
+
+# Install Node dependencies
 npm install
+
+# Start Vite Development Server
 npm run dev
 ```
-Frontend application running at `http://localhost:5173`.
+> 🌐 **Frontend Application running at**: `http://localhost:5173`
 
 ---
 
-## 🔐 Environment Variables
+## 🔐 Environment Configuration
 
-Key configuration variables defined in `.env.example`:
+Create a `.env` file in the `backend/` directory based on `.env.example`:
 
-| Variable | Description | Default / Example |
-|---|---|---|
-| `HOST` | Backend server host | `0.0.0.0` |
-| `PORT` | Backend server port | `8000` |
-| `CORS_ORIGINS` | Allowed frontend origins | `http://localhost:5173` |
-| `FOUNDRY_PROJECT_ENDPOINT` | Microsoft Foundry project URL | `https://your-foundry.cognitiveservices.azure.com/` |
-| `FOUNDRY_AGENT_ID` | Microsoft Foundry agent ID | `agent-campus-career-v1` |
-| `USE_MOCK_FOUNDRY_FALLBACK` | Fallback to local grounded dataset | `true` |
+```env
+HOST=127.0.0.1
+PORT=8000
+CORS_ORIGINS=http://localhost:5173
+
+# Azure AI Foundry Configuration
+FOUNDRY_PROJECT_ENDPOINT=https://pranjal2961beai24-3888-resource.services.ai.azure.com/api/projects/pranjal2961beai24-3888
+FOUNDRY_AGENT_ID=CAMPUS-PLACEMENT-ASSISTENT:2
+FOUNDRY_AGENT_NAME=CAMPUS-PLACEMENT-ASSISTENT
+FOUNDRY_AGENT_VERSION=2
+FOUNDRY_API_KEY=your_azure_ai_foundry_api_key
+
+# Set to true for offline / local fallback mode
+USE_MOCK_FOUNDRY_FALLBACK=false
+```
 
 ---
 
-## 📋 Development Workflow & Issues
+## 📡 API Documentation Matrix
 
-Development is executed sequentially across 18 tracked GitHub Issues (#1 to #18).
-Refer to [docs/ISSUE_TRACKER.md](file:///docs/ISSUE_TRACKER.md) for the complete issue roadmap and assigned sub-agent roles.
+| Method | Endpoint | Description | Auth Required |
+|---|---|---|---|
+| `POST` | `/api/chat` | Send query to Azure AI Foundry Agent with student context | Yes |
+| `GET` | `/api/companies` | Fetch placement companies with domain & CGPA filtering | No |
+| `POST` | `/api/auth/register` | Register new student account | No |
+| `POST` | `/api/auth/login` | Authenticate student credentials | No |
+| `PUT` | `/api/auth/profile` | Update academic profile, skills, and preferences | Yes |
+| `GET` | `/api/health` | Backend service health check | No |
 
 ---
 
-## 📄 License
+## 🧪 Testing & Quality Verification
 
-MIT License. Designed for university placement cells and career guidance programs.
+### Run Backend Unit & Integration Tests
+```bash
+cd backend
+py -3 -m pytest
+```
+> ✅ **10/10 Tests Passing** across authentication, company explorer, grounded career engine, and Azure AI Foundry adapter.
+
+### Run Frontend Production Build
+```bash
+cd frontend
+npm run build
+```
+> ⚡ **Vite Production Build Clean** (0 errors).
+
+---
+
+## 📄 License & Roadmap
+
+Distributed under the **MIT License**. Designed for university placement cells, career guidance departments, and student placement assistance programs.
+
+Developed with ❤️ by **Parv Sood**.
